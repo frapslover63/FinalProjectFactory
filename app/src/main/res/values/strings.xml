@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">FinalProjectFactory</string>
+    <string name="shop_name">TokoJustin</string>
+    <string name="stock_check">Cek Stock</string>
+    <string name="cek_stock">Cek Stock</string>
+    <string name="search_text">Search</string>
+    <string name="kode_sendal">Kode Sendal</string>
+    <string name="transaksi">TRANSAKSI</string>
+    <string name="ukuran">Ukuran</string>
+    <string name="warna">Warna</string>
+    <string name="jumlah">Jumlah</string>
+    <string name="add">Add</string>
+    <string name="next">next</string>
+    <string name="search">Search</string>
+    <string name="confirm">Confirm</string>
+    <string name="aplikasi_pabrik">Aplikasi Pabrik</string>
+    <string name="barang_baru">Barang Baru</string>
+    <string name="update_stock">Update Stock</string>
+    <string name="laporan">Laporan</string>
+    <string name="list_stock">List Stock</string>
+</resources>
