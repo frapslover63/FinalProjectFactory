@@ -18,4 +18,5 @@
     <string name="update_stock">Update Stock</string>
     <string name="laporan">Laporan</string>
     <string name="list_stock">List Stock</string>
+    <string name="stock_baru">Stock Baru</string>
 </resources>
