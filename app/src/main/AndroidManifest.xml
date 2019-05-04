@@ -29,7 +29,7 @@
         </activity>
         <activity android:name=".DetailItemPabrikActivity">
         </activity>
-        <activity android:name=".TransaksiPabConfirmActivity">
+        <activity android:name=".TransaksiPabrikConfirmActivity">
         </activity>
         <activity android:name=".TransaksiPabrikActivity">
         </activity>
