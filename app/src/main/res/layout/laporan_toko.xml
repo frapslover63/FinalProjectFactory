@@ -16,16 +16,16 @@
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary">
             <TextView
-                    android:id="@+id/row_sendal_kode"
+                    android:id="@+id/transaksi_toko_id"
                     android:paddingStart="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ini buat kode"
+                    android:text="ini buat kode transaksi toko"
                     android:textColor="@color/white"/>
         </LinearLayout>
         <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="85dp"
+                android:layout_height="60dp"
                 android:background="@color/colorPrimary">
             <LinearLayout
                     android:orientation="horizontal"
@@ -47,10 +47,10 @@
                         <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/ukuran"
-                                android:paddingRight="35dp"/>
+                                android:text="@string/tanggal"
+                                android:paddingRight="29dp"/>
                         <TextView
-                                android:id="@+id/row_sendal_ukuran"
+                                android:id="@+id/transaksi_toko_tanggal"
                                 android:paddingStart="5dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -64,10 +64,10 @@
                         <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/warna"
-                                android:paddingEnd="39dp"/>
+                                android:text="@string/status"
+                                android:paddingEnd="40dp"/>
                         <TextView
-                                android:id="@+id/row_sendal_warna"
+                                android:id="@+id/transaksi_toko_status"
                                 android:paddingStart="5dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -81,27 +81,10 @@
                         <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/merk"
-                                android:paddingEnd="48dp"/>
+                                android:text="@string/total_harga"
+                                android:paddingEnd="6dp"/>
                         <TextView
-                                android:id="@+id/row_sendal_merk"
-                                android:paddingStart="5dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="aaa"/>
-                    </LinearLayout>
-                    <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingStart="5dp">
-                        <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/jumlah"
-                                android:paddingEnd="33dp"/>
-                        <TextView
-                                android:id="@+id/row_sendal_jumlah"
+                                android:id="@+id/transaksi_toko_totalharga"
                                 android:paddingStart="5dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

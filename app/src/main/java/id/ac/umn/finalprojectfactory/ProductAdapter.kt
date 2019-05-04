@@ -9,10 +9,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import data.Product
-import android.R.attr.country
-import java.nio.file.Files.size
-import android.text.method.TextKeyListener.clear
-import android.widget.Filter
 
 
 class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
@@ -26,7 +22,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ProductAdapter.ProductViewHolder {
         val layoutInflater: LayoutInflater = LayoutInflater.from(p0.context)
-        val view: View = layoutInflater.inflate(R.layout.product, p0, false)
+        val view: View = layoutInflater.inflate(R.layout.product_pabrik, p0, false)
         return ProductViewHolder(view)
     }
 
@@ -55,10 +51,10 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
     }
 
     class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val idItem: TextView = itemView.findViewById(R.id.idItem) as TextView
-        val warnaItem: TextView = itemView.findViewById(R.id.warnaItem) as TextView
-        val ukuranItem: TextView = itemView.findViewById(R.id.ukuranItem) as TextView
-        val jumlahItem: TextView = itemView.findViewById(R.id.jumlahItem) as TextView
+        val idItem: TextView = itemView.findViewById(R.id.product_kodesendal) as TextView
+        val warnaItem: TextView = itemView.findViewById(R.id.product_warna) as TextView
+        val ukuranItem: TextView = itemView.findViewById(R.id.product_ukuran) as TextView
+        val jumlahItem: TextView = itemView.findViewById(R.id.product_jumlah) as TextView
         val parentLayout: LinearLayout = itemView.findViewById(R.id.parent_layout) as LinearLayout
     }
 }

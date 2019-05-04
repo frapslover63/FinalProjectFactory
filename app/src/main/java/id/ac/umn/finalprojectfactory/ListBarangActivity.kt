@@ -126,12 +126,12 @@ class ListBarangActivity : AppCompatActivity(), Url, CustomParameter {
 
         productAdapter = ProductAdapter(dataList, this@ListBarangActivity)
 
-        recyclerView = findViewById(R.id.recycler_list_sendal)
+        recyclerView = findViewById(R.id.recyclerview_Barang)
         val layoutManager : RecyclerView.LayoutManager = LinearLayoutManager(this@ListBarangActivity)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = productAdapter
 
-        txtSearch = findViewById(R.id.main2_search_edittext)
+        txtSearch = findViewById(R.id.edt_Search)
 
         txtSearch.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable?) {

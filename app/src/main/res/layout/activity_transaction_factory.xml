@@ -4,9 +4,10 @@
                                              xmlns:tools="http://schemas.android.com/tools"
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
-                                             android:configChanges="orientation|screenLayout|screenSize">
+                                             android:configChanges="orientation|screenLayout|screenSize"
+                                             tools:context=".TransaksiPabrikActivity">
     <android.support.v7.widget.CardView
-            android:id="@+id/judulpage"
+            android:id="@+id/titlepage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -45,15 +46,17 @@
                     android:textSize="14sp"/>
         </LinearLayout>
     </android.support.v7.widget.CardView>
+
     <android.support.constraint.ConstraintLayout
             android:id="@+id/form_trans"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/judulpage"
-            app:layout_constraintBottom_toTopOf="@+id/scrollView">
+            app:layout_constraintTop_toBottomOf="@+id/titlepage"
+            app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
                 android:id="@+id/field_code"
@@ -62,6 +65,7 @@
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toTopOf="@id/field_ukuran"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -71,9 +75,10 @@
                     android:layout_height="35dp"
                     android:layout_marginStart="24dp"
                     android:background="@color/colorPrimary"
-                    android:padding="8dp"/>
+                    android:padding="8dp" />
 
             <EditText
+                    android:id="@+id/edt_KodeSendal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="24dp"
@@ -82,8 +87,7 @@
                     android:hint="@string/kode_sendal"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"
-                    android:textSize="15sp"
-                    android:id="@+id/inputKodeSendal"/>
+                    android:textSize="15sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -92,10 +96,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/field_warna"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/field_code"
-                app:layout_constraintBottom_toTopOf="@+id/field_warna">
+                app:layout_constraintTop_toBottomOf="@+id/field_code">
 
             <ImageView
                     android:id="@+id/imgView_ukuran"
@@ -103,21 +107,21 @@
                     android:layout_height="35dp"
                     android:layout_marginStart="24dp"
                     android:background="@color/colorPrimary"
-                    android:padding="8dp"/>
+                    android:padding="8dp" />
 
             <EditText
+                    android:id="@+id/edt_Ukuran"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:inputType="number"
                     android:layout_marginStart="0dp"
                     android:layout_marginEnd="24dp"
                     android:layout_marginBottom="0dp"
                     android:background="@color/editTextBackground"
                     android:hint="@string/ukuran"
+                    android:inputType="number"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"
-                    android:textSize="15sp"
-                    android:id="@+id/inputUkuranSendal"/>
+                    android:textSize="15sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -126,19 +130,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@id/field_jumlah"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/field_ukuran"
-                app:layout_constraintBottom_toTopOf="@id/field_jumlah">
+                app:layout_constraintTop_toBottomOf="@+id/field_ukuran">
 
             <ImageView
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_marginStart="24dp"
                     android:background="@color/colorPrimary"
-                    android:padding="8dp"/>
+                    android:padding="8dp" />
 
             <EditText
+                    android:id="@+id/edt_Warna"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="0dp"
@@ -148,8 +153,7 @@
                     android:hint="@string/warna"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"
-                    android:textSize="15sp"
-                    android:id="@+id/inputWarnaSendal"/>
+                    android:textSize="15sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -158,10 +162,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/field_warna"
-                app:layout_constraintBottom_toTopOf="@id/btnAdd">
+                app:layout_constraintTop_toBottomOf="@+id/field_warna">
 
             <ImageView
                     android:id="@+id/imgView_jumlah"
@@ -169,61 +173,51 @@
                     android:layout_height="35dp"
                     android:layout_marginStart="24dp"
                     android:background="@color/colorPrimary"
-                    android:padding="8dp"/>
+                    android:padding="8dp" />
 
             <EditText
+                    android:id="@+id/edt_Jumlah"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:inputType="number"
                     android:layout_marginStart="0dp"
                     android:layout_marginEnd="24dp"
                     android:layout_marginBottom="0dp"
                     android:background="@color/editTextBackground"
                     android:hint="@string/jumlah"
+                    android:inputType="number"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"
-                    android:textSize="15sp"
-                    android:id="@+id/inputJumlahSendal"/>
+                    android:textSize="15sp" />
         </LinearLayout>
-
-        <Button
-                android:id="@+id/btnAdd"
-                android:layout_width="150dp"
-                android:layout_height="35dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_centerHorizontal="true"
-                android:background="@color/colorPrimary"
-                android:layout_marginTop="20dp"
-                android:text="@string/add"
-                android:textColor="@color/white"
-                app:layout_constraintTop_toBottomOf="@+id/field_jumlah"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent">
-        </Button>
     </android.support.constraint.ConstraintLayout>
-    <ScrollView
-            android:id="@+id/scrollView"
+
+    <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="150dp"
+            android:layout_height="35dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
+            android:background="@color/colorPrimary"
+            android:text="@string/add"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toTopOf="@+id/recycler_listBarang"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/form_trans" />
+
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_listBarang"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            app:layout_constraintTop_toBottomOf="@+id/form_trans"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-            <android.support.v7.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="350dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
-            </android.support.v7.widget.RecyclerView>
-        </LinearLayout>
-    </ScrollView>
+            app:layout_constraintTop_toBottomOf="@+id/btnAdd" />
     <android.support.design.widget.FloatingActionButton
             android:id="@+id/fabNext"
             android:layout_width="58dp"

@@ -13,23 +13,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        cardviewStockBaru.setOnClickListener {
+        cardviewBarangBaru.setOnClickListener {
             val intent = Intent(this@MainActivity, NewStockActivity::class.java)
             startActivity(intent)
         }
-
-        cardviewStock.setOnClickListener {
-            val intent = Intent(this@MainActivity, UpdateStockActivity::class.java)
+        cardviewCekBarang.setOnClickListener {
+            val intent = Intent(this@MainActivity, CekBarangActivity::class.java)
             startActivity(intent)
         }
-
         cardviewLaporan.setOnClickListener {
             val intent = Intent(this@MainActivity, LaporanActivity::class.java)
             startActivity(intent)
         }
-
-        cardviewListBarang.setOnClickListener {
-            val intent = Intent(this@MainActivity, ListBarangActivity::class.java)
+        cardviewTransaksi.setOnClickListener {
+            val intent = Intent(this@MainActivity, TransaksiPabrikActivity::class.java)
             startActivity(intent)
         }
     }

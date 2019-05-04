@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ListBarangActivity">
+        tools:context=".ListLaporanActivity">
 
     <android.support.v7.widget.CardView
             android:id="@+id/judulpage"
@@ -38,11 +38,11 @@
                     android:src="@drawable/stocklogo"
                     android:tint="@color/white"/>
             <TextView
-                    android:id="@+id/title_liststock"
+                    android:id="@+id/textJudulLaporan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-medium"
-                    android:text="@string/list_stock"
+                    android:text="@string/list_laporan"
                     android:textColor="@color/white"
                     android:textSize="14sp"/>
         </LinearLayout>
@@ -89,7 +89,7 @@
     </android.support.constraint.ConstraintLayout>
 
     <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerview_Barang"
+            android:id="@+id/recyclerview_laporan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
