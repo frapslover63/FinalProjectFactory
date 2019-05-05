@@ -12,6 +12,14 @@ interface Url{
     fun callUrlTransaction(): String{
         return baseUrl()+"/transactionData/transactionPabrik.php";
     }
+
+    fun callUrlNewProduct(): String{
+        return baseUrl()+"/insertData/insertNewStock.php"
+    }
+
+    fun callUrlNewProductDetail(): String{
+        return baseUrl()+"/insertData/insertStockDetail.php"
+    }
 }
 
 interface CustomParameter{
@@ -30,5 +38,5 @@ interface CustomParameter{
 
 
 private fun baseUrl(): String{
-    return "http://192.168.1.6";
+    return "http://192.168.0.24";
 }

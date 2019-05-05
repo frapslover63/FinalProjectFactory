@@ -40,4 +40,5 @@
     <string name="detail_barang_pabrik">Detail Barang Pabrik</string>
     <string name="detail_barang_toko">Detail Barang Toko</string>
     <string name="stock">Stock</string>
+    <string name="keterangan">Keterangan</string>
 </resources>
