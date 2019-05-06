@@ -18,6 +18,7 @@ class NewStockOption : AppCompatActivity() {
 
         tambahModel.setOnClickListener{
             val intent =  Intent(this@NewStockOption, NewModelActivity::class.java);
+            startActivity(intent);
         }
 
     }
