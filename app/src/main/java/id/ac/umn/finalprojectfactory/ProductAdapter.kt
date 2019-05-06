@@ -74,10 +74,11 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
     }
 
     class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val idItem: TextView = itemView.findViewById(R.id.product_kodesendal) as TextView
-        val warnaItem: TextView = itemView.findViewById(R.id.product_warna) as TextView
-        val ukuranItem: TextView = itemView.findViewById(R.id.product_ukuran) as TextView
-        val jumlahItem: TextView = itemView.findViewById(R.id.product_jumlah) as TextView
+        val idItem: TextView = itemView.findViewById(R.id.txtview_produkid) as TextView
+        val warnaItem: TextView = itemView.findViewById(R.id.txtview_Warna) as TextView
+        val ukuranItem: TextView = itemView.findViewById(R.id.txtview_Ukuran) as TextView
+        val jumlahItem: TextView = itemView.findViewById(R.id.txtview_Jumlah) as TextView
+        val keteranganItem: TextView = itemView.findViewById(R.id.txtview_Keterangan) as TextView
         val parentLayout: LinearLayout = itemView.findViewById(R.id.parent_layout) as LinearLayout
         fun Click(intent: Intent, context: Context){
             parentLayout.setOnClickListener {

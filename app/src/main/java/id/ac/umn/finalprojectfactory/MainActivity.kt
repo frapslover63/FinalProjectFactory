@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         cardviewBarangBaru.setOnClickListener {
-            val intent = Intent(this@MainActivity, NewStockActivity::class.java)
+            val intent = Intent(this@MainActivity, NewStockOption::class.java)
             startActivity(intent)
         }
         cardviewCekBarang.setOnClickListener {

@@ -64,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintBottom_toTopOf="@id/field_ukuran"
+                app:layout_constraintBottom_toTopOf="@id/field_Keterangan"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -91,107 +91,6 @@
                     android:textSize="15sp" />
         </LinearLayout>
 
-        <LinearLayout
-                android:id="@+id/field_ukuran"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toTopOf="@+id/field_warna"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/field_code">
-
-            <ImageView
-                    android:id="@+id/imgView_ukuran"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginStart="24dp"
-                    android:background="@color/colorPrimary"
-                    android:contentDescription="@null"
-                    android:padding="8dp" />
-
-            <EditText
-                    android:id="@+id/edt_Ukuran"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="0dp"
-                    android:background="@color/editTextBackground"
-                    android:hint="@string/ukuran"
-                    android:inputType="number"
-                    android:paddingStart="20dp"
-                    android:textSize="15sp"
-                    tools:ignore="RtlSymmetry" />
-        </LinearLayout>
-
-        <LinearLayout
-                android:id="@+id/field_warna"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toTopOf="@id/field_jumlah"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/field_ukuran">
-
-            <ImageView
-                    android:id="@+id/imgView_warna"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginStart="24dp"
-                    android:background="@color/colorPrimary"
-                    android:padding="8dp" />
-
-            <EditText
-                    android:id="@+id/edt_Warna"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="0dp"
-                    android:background="@color/editTextBackground"
-                    android:hint="@string/warna"
-                    android:paddingStart="20dp"
-                    android:textSize="15sp"
-                    tools:ignore="RtlSymmetry" />
-        </LinearLayout>
-
-        <LinearLayout
-                android:id="@+id/field_jumlah"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toTopOf="@id/field_Keterangan"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/field_warna">
-
-            <ImageView
-                    android:id="@+id/imgView_jumlah"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginStart="24dp"
-                    android:background="@color/colorPrimary"
-                    android:padding="8dp" />
-
-            <EditText
-                    android:id="@+id/edt_Jumlah"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="0dp"
-                    android:background="@color/editTextBackground"
-                    android:hint="@string/jumlah"
-                    android:inputType="number"
-                    android:paddingLeft="20dp"
-                    android:textSize="15sp"
-                    tools:ignore="RtlSymmetry" />
-        </LinearLayout>
 
         <LinearLayout
                 android:id="@+id/field_Keterangan"
@@ -202,7 +101,7 @@
                 app:layout_constraintBottom_toTopOf="@id/field_Harga"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/field_jumlah">
+                app:layout_constraintTop_toBottomOf="@+id/field_code">
 
             <ImageView
                     android:id="@+id/imgView_Keterangan"
@@ -221,7 +120,7 @@
                     android:layout_marginBottom="0dp"
                     android:background="@color/editTextBackground"
                     android:hint="@string/keterangan"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:paddingStart="20dp"
                     android:textSize="15sp"
                     tools:ignore="RtlSymmetry" />

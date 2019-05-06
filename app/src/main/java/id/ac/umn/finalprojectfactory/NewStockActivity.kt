@@ -16,9 +16,6 @@ import data.Url
 class NewStockActivity : AppCompatActivity(), Url {
 
     lateinit var kode: Editable
-    lateinit var ukuran: Editable
-    lateinit var warna: Editable
-    lateinit var jumlah: Editable
     lateinit var keterangan: Editable
     lateinit var harga: Editable
 
@@ -27,16 +24,13 @@ class NewStockActivity : AppCompatActivity(), Url {
         setContentView(R.layout.activity_new_stock)
 
         kode = edt_KodeSendal.text
-        ukuran = edt_Ukuran.text
-        warna = edt_Warna.text
-        jumlah = edt_Jumlah.text
         keterangan = edt_Keterangan.text
         harga = edt_Harga.text
 
         btnAdd.setOnClickListener {
             var empty: Boolean = false
             var warning: String = ""
-            if(kode.isEmpty() || ukuran.isEmpty() || warna.isEmpty() || jumlah.isEmpty() || keterangan.isEmpty() || harga.isEmpty()){
+            if(kode.isEmpty() || keterangan.isEmpty() || harga.isEmpty()){
                 empty = true
             }
 
@@ -46,15 +40,6 @@ class NewStockActivity : AppCompatActivity(), Url {
             else{
                 if(kode.isEmpty()){
                     warning += "Kode sendal, "
-                }
-                if(ukuran.isEmpty()){
-                    warning += "Ukuran, "
-                }
-                if(warna.isEmpty()){
-                    warning += "Warna, "
-                }
-                if(jumlah.isEmpty()){
-                    warning += "Jumlah, "
                 }
                 if(keterangan.isEmpty()){
                     warning += "Keterangan, "
@@ -87,9 +72,10 @@ class NewStockActivity : AppCompatActivity(), Url {
                 val res = JSONObject(it)
                 val status: String = res.getString("success")
                 val data: String = res.getString("data")
-                if(status == "success"){
-                    var stringRequest1: StringRequest = addDetail()
-                    requestQueue.add(stringRequest1)
+                if(status == "Success"){
+//                    var stringRequest1: StringRequest = addDetail()
+//                    requestQueue.add(stringRequest1)
+                    Toast.makeText(this, data, Toast.LENGTH_LONG);
                 }
                 else{
                     Log.e("ResponseUnknown", data)
@@ -103,31 +89,31 @@ class NewStockActivity : AppCompatActivity(), Url {
         requestQueue.add(stringRequest)
     }
 
-    fun addDetail(): StringRequest{
-        val urlStockDetail: String = callUrlNewProductDetail()+
-                "?produkid=" + kode.toString()+
-                "&Warna=" + warna.toString()+
-                "&Ukuran=" + ukuran.toString()
-
-        val detailRequest = StringRequest(
-            Request.Method.GET,
-            urlStockDetail,
-            Response.Listener<String>() {
-                val res1 = JSONObject(it)
-                val status: String = res1.getString("success")
-                val data: String = res1.getString("data")
-                if(status.equals("success")){
-                    Toast.makeText(this@NewStockActivity, "Product Added Successfully", Toast.LENGTH_SHORT).show()
-                }
-                else{
-                    Log.e("ResponseUnknown", data)
-                    Toast.makeText(this@NewStockActivity, data, Toast.LENGTH_SHORT).show()
-                }
-            },
-            Response.ErrorListener {
-
-            }
-        )
-        return detailRequest
-    }
+//    fun addDetail(): StringRequest{
+//        val urlStockDetail: String = callUrlNewProductDetail()+
+//                "?produkid=" + kode.toString()+
+//                "&Warna=" + warna.toString()+
+//                "&Ukuran=" + ukuran.toString()
+//
+//        val detailRequest = StringRequest(
+//            Request.Method.GET,
+//            urlStockDetail,
+//            Response.Listener<String>() {
+//                val res1 = JSONObject(it)
+//                val status: String = res1.getString("success")
+//                val data: String = res1.getString("data")
+//                if(status.equals("success")){
+//                    Toast.makeText(this@NewStockActivity, "Product Added Successfully", Toast.LENGTH_SHORT).show()
+//                }
+//                else{
+//                    Log.e("ResponseUnknown", data)
+//                    Toast.makeText(this@NewStockActivity, data, Toast.LENGTH_SHORT).show()
+//                }
+//            },
+//            Response.ErrorListener {
+//
+//            }
+//        )
+//        return detailRequest
+//    }
 }
