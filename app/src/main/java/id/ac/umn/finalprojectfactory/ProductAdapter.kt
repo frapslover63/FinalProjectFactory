@@ -1,6 +1,8 @@
 package id.ac.umn.finalprojectfactory
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +16,7 @@ import data.Product
 class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
     private var dataList: ArrayList<Product>
     private var context: Context
+    private var tipeDetail: String = ""
 
     constructor(dataList: ArrayList<Product>, context: Context){
         this.dataList = dataList
@@ -39,9 +42,29 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
         p0.warnaItem.text = "Warna : " + dataList.get(p1).warna
         p0.ukuranItem.text = "Ukuran : " + dataList.get(p1).ukuran
         p0.jumlahItem.text = "Jumlah : " + dataList.get(p1).jumlah
-        p0.parentLayout.setOnClickListener {
-            Toast.makeText(context, p0.idItem.text, Toast.LENGTH_SHORT).show()
+        var intent: Intent = Intent()
+
+        var pass: Bundle = Bundle()
+        pass.putString("produkid", p0.idItem.text.toString())
+        pass.putString("warna", p0.warnaItem.text.toString())
+        pass.putString("ukuran", p0.ukuranItem.text.toString())
+        pass.putString("jumlah", p0.jumlahItem.text.toString())
+
+        if(tipeDetail.equals("toko")){
+            intent = Intent(context, DetailItemTokoActivity::class.java)
         }
+        else if(tipeDetail.equals("pabrik")){
+            intent = Intent(context, DetailItemPabrikActivity::class.java)
+        }
+        intent.putExtras(pass)
+        p0.Click(intent, context)
+    }
+
+    fun updateList(newList: ArrayList<Product>, tipe: String){
+        tipeDetail = tipe
+        dataList = ArrayList()
+        dataList.addAll(newList)
+        notifyDataSetChanged()
     }
 
     fun updateList(newList: ArrayList<Product>){
@@ -56,5 +79,11 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
         val ukuranItem: TextView = itemView.findViewById(R.id.product_ukuran) as TextView
         val jumlahItem: TextView = itemView.findViewById(R.id.product_jumlah) as TextView
         val parentLayout: LinearLayout = itemView.findViewById(R.id.parent_layout) as LinearLayout
+        fun Click(intent: Intent, context: Context){
+            parentLayout.setOnClickListener {
+                context.startActivity(intent)
+            }
+        }
+
     }
 }

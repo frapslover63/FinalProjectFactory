@@ -12,10 +12,12 @@ class CekBarangActivity : AppCompatActivity() {
         setContentView(R.layout.activity_cek_barang)
         cardviewBarangToko.setOnClickListener {
             val intent = Intent(this@CekBarangActivity, ListBarangActivity::class.java)
+            intent.putExtra("tipe", "toko")
             startActivity(intent)
         }
         cardviewBarangPabrik.setOnClickListener{
             val intent = Intent(this@CekBarangActivity, ListBarangActivity::class.java)
+            intent.putExtra("tipe", "pabrik")
             startActivity(intent)
         }
     }
