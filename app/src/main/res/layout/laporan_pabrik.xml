@@ -16,7 +16,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary">
             <TextView
-                    android:id="@+id/transaksi_toko_id"
+                    android:id="@+id/txtview_detailtranspabrikid"
                     android:paddingStart="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
                                 android:text="@string/tanggal"
                                 android:paddingRight="29dp"/>
                         <TextView
-                                android:id="@+id/transaksi_pabrik_tanggal"
+                                android:id="@+id/txtview_Tanggal"
                                 android:paddingStart="5dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
                                 android:text="@string/nama_perusahaan"
                                 android:paddingEnd="22dp"/>
                         <TextView
-                                android:id="@+id/transaksi_pabrik_pt"
+                                android:id="@+id/txtview_CompanyName"
                                 android:paddingStart="5dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
                                 android:text="@string/total_harga"
                                 android:paddingEnd="6dp"/>
                         <TextView
-                                android:id="@+id/transaksi_pabrik_totalharga"
+                                android:id="@+id/txtview_Totalharga"
                                 android:paddingStart="5dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

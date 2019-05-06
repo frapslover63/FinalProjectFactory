@@ -78,7 +78,7 @@
                     android:padding="8dp" />
 
             <EditText
-                    android:id="@+id/edt_KodeSendal"
+                    android:id="@+id/edt_produkid"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="24dp"
@@ -189,6 +189,39 @@
                     android:paddingEnd="20dp"
                     android:textSize="15sp" />
         </LinearLayout>
+        <LinearLayout
+                android:id="@+id/field_hargabeli"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/field_jumlah">
+
+            <ImageView
+                    android:id="@+id/imgView_hargabeli"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="24dp"
+                    android:background="@color/colorPrimary"
+                    android:padding="8dp" />
+
+            <EditText
+                    android:id="@+id/edt_HargaBeli"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="0dp"
+                    android:background="@color/editTextBackground"
+                    android:hint="@string/harga"
+                    android:inputType="number"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:textSize="15sp" />
+        </LinearLayout>
     </android.support.constraint.ConstraintLayout>
 
     <Button
@@ -201,14 +234,14 @@
             android:background="@color/colorPrimary"
             android:text="@string/add"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toTopOf="@+id/recycler_listBarang"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerview_product"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/form_trans" />
 
     <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_listBarang"
+            android:id="@+id/recyclerview_product"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
