@@ -56,6 +56,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
         else if(tipeDetail.equals("pabrik")){
             intent = Intent(context, DetailItemPabrikActivity::class.java)
         }
+
         intent.putExtras(pass)
         p0.Click(intent, context)
     }
