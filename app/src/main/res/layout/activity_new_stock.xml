@@ -165,7 +165,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/field_Keterangan"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/field_warna">
@@ -189,6 +189,74 @@
                     android:hint="@string/jumlah"
                     android:inputType="number"
                     android:paddingLeft="20dp"
+                    android:textSize="15sp"
+                    tools:ignore="RtlSymmetry" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/field_Keterangan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@id/field_Harga"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/field_jumlah">
+
+            <ImageView
+                    android:id="@+id/imgView_Keterangan"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="24dp"
+                    android:background="@color/colorPrimary"
+                    android:padding="8dp" />
+
+            <EditText
+                    android:id="@+id/edt_Keterangan"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="0dp"
+                    android:background="@color/editTextBackground"
+                    android:hint="@string/keterangan"
+                    android:inputType="number"
+                    android:paddingStart="20dp"
+                    android:textSize="15sp"
+                    tools:ignore="RtlSymmetry" />
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/field_Harga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/field_Keterangan">
+
+            <ImageView
+                    android:id="@+id/imgView_Harga"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="24dp"
+                    android:background="@color/colorPrimary"
+                    android:padding="8dp" />
+
+            <EditText
+                    android:id="@+id/edt_Harga"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="0dp"
+                    android:background="@color/editTextBackground"
+                    android:hint="@string/harga"
+                    android:inputType="number"
+                    android:paddingStart="20dp"
                     android:textSize="15sp"
                     tools:ignore="RtlSymmetry" />
         </LinearLayout>
