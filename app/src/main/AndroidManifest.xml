@@ -13,6 +13,10 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:usesCleartextTraffic="true">
+        <activity android:name=".NewModelActivity">
+        </activity>
+        <activity android:name=".NewStockOption">
+        </activity>
         <activity android:name=".DetailItemTokoActivity">
         </activity>
         <activity android:name=".CekBarangActivity">

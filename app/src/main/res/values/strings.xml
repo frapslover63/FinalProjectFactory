@@ -41,4 +41,7 @@
     <string name="detail_barang_toko">Detail Barang Toko</string>
     <string name="stock">Stock</string>
     <string name="keterangan">Keterangan</string>
+    <string name="StockOptions">Stock Options</string>
+    <string name="newProduct">Barang Baru</string>
+    <string name="addModel">Tambah Model</string>
 </resources>
