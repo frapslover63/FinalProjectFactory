@@ -8,6 +8,7 @@ import kotlinx.android.synthetic.main.activity_cek_barang.*
 class CekBarangActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cek_barang)
         cardviewBarangToko.setOnClickListener {

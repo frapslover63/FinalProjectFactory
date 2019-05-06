@@ -49,7 +49,7 @@
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_listBarang"
+            android:id="@+id/recyclerview_product"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -70,7 +70,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recycler_listBarang">
+            app:layout_constraintTop_toBottomOf="@+id/recyclerview_product">
 
         <ImageView
                 android:id="@+id/imgView_perusahaan"
@@ -81,7 +81,7 @@
                 android:padding="8dp" />
 
         <EditText
-                android:id="@+id/edt_NamaPT"
+                android:id="@+id/edt_CompanyName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="0dp"

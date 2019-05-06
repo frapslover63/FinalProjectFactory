@@ -16,7 +16,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary">
             <TextView
-                    android:id="@+id/row_sendal_kode"
+                    android:id="@+id/txtview_produkid"
                     android:paddingStart="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
                                 android:text="@string/ukuran"
                                 android:paddingRight="35dp"/>
                         <TextView
-                                android:id="@+id/product_ukuran"
+                                android:id="@+id/txtview_Ukuran"
                                 android:paddingStart="5dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -67,24 +67,7 @@
                                 android:text="@string/warna"
                                 android:paddingEnd="39dp"/>
                         <TextView
-                                android:id="@+id/product_warna"
-                                android:paddingStart="5dp"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="aaa"/>
-                    </LinearLayout>
-                    <LinearLayout
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingStart="5dp">
-                        <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/merk"
-                                android:paddingEnd="48dp"/>
-                        <TextView
-                                android:id="@+id/product_merk"
+                                android:id="@+id/txtview_Warna"
                                 android:paddingStart="5dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -101,7 +84,7 @@
                                 android:text="@string/jumlah"
                                 android:paddingEnd="33dp"/>
                         <TextView
-                                android:id="@+id/product_jumlah"
+                                android:id="@+id/txtview_Jumlah"
                                 android:paddingStart="5dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -118,7 +101,24 @@
                                 android:text="@string/harga"
                                 android:paddingEnd="42dp"/>
                         <TextView
-                                android:id="@+id/product_harga"
+                                android:id="@+id/txtview_HargaJual"
+                                android:paddingStart="5dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="aaa"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="5dp">
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/keterangan"
+                                android:paddingEnd="7dp"/>
+                        <TextView
+                                android:id="@+id/txtview_Keterangan"
                                 android:paddingStart="5dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
