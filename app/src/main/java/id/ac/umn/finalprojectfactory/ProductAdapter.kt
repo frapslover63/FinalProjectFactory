@@ -44,11 +44,11 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
         p0.jumlahItem.text = "Jumlah : " + dataList.get(p1).jumlah
         var intent: Intent = Intent()
 
-        val pass: Bundle = Bundle()
-        pass.putString("produkid", dataList.get(p1).produkId)
-        pass.putString("warna", dataList.get(p1).warna)
-        pass.putString("ukuran", dataList.get(p1).ukuran.toString())
-        pass.putString("jumlah", dataList.get(p1).jumlah.toString())
+//        val pass: Bundle = Bundle()
+//        pass.putString("produkid", dataList.get(p1).produkId)
+//        pass.putString("warna", dataList.get(p1).warna)
+//        pass.putString("ukuran", dataList.get(p1).ukuran.toString())
+//        pass.putString("jumlah", dataList.get(p1).jumlah.toString())
 
         if(tipeDetail.equals("toko")){
             intent = Intent(context, DetailItemTokoActivity::class.java)
@@ -56,8 +56,11 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
         else if(tipeDetail.equals("pabrik")){
             intent = Intent(context, DetailItemPabrikActivity::class.java)
         }
-
-        intent.putExtras(pass)
+        intent.putExtra("produkid", dataList.get(p1).produkId)
+        intent.putExtra("warna", dataList.get(p1).warna)
+        intent.putExtra("ukuran", dataList.get(p1).ukuran.toString())
+        intent.putExtra("jumlah", dataList.get(p1).jumlah.toString())
+        //intent.putExtras(pass)
         p0.Click(intent, context)
     }
 
