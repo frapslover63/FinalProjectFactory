@@ -14,9 +14,9 @@ class DetailItemPabrikActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_item_pabrik)
 
-        txtview_KodeSendal.text = "Product ID : " + intent.getBundleExtra("produkid").toString()
-        txtview_Ukuran.text = intent.getBundleExtra("ukuran").toString()
-        txtview_Warna.text = intent.getBundleExtra("warna").toString()
-        txtview_CurrentStockPabrik.text = intent.getBundleExtra("jumlah").toString()
+        txtview_KodeSendal.text = intent.getStringExtra("produkid");
+        txtview_Ukuran.text = intent.getStringExtra("ukuran");
+        txtview_Warna.text = intent.getStringExtra("warna");
+        txtview_CurrentStockPabrik.text = intent.getStringExtra("jumlah");
     }
 }

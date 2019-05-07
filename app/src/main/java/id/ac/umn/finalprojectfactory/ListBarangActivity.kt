@@ -96,6 +96,8 @@ class ListBarangActivity : AppCompatActivity(), Url, CustomParameter {
                             defaultDataList.add(product)
                         }
                     }
+//                    Log.e("dataList", dataList.get(0).produkId);
+//                    Log.e("typeExtra", tipe.getStringExtra("tipe"));
                     productAdapter.updateList(dataList, tipe.getStringExtra("tipe"))
                 }
             }
