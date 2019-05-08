@@ -11,6 +11,13 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import data.Product
+import kotlinx.android.synthetic.main.product_pabrik.view.*
+import kotlinx.android.synthetic.main.product_toko.view.*
+import kotlinx.android.synthetic.main.product_toko.view.txtview_Jumlah
+import kotlinx.android.synthetic.main.product_toko.view.txtview_Keterangan
+import kotlinx.android.synthetic.main.product_toko.view.txtview_Ukuran
+import kotlinx.android.synthetic.main.product_toko.view.txtview_Warna
+import kotlinx.android.synthetic.main.product_toko.view.txtview_produkid
 
 
 class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
@@ -78,12 +85,13 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
     }
 
     class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val idItem: TextView = itemView.findViewById(R.id.txtview_produkid) as TextView
-        val warnaItem: TextView = itemView.findViewById(R.id.txtview_Warna) as TextView
-        val ukuranItem: TextView = itemView.findViewById(R.id.txtview_Ukuran) as TextView
-        val jumlahItem: TextView = itemView.findViewById(R.id.txtview_Jumlah) as TextView
-        val keteranganItem: TextView = itemView.findViewById(R.id.txtview_Keterangan) as TextView
-        val parentLayout: LinearLayout = itemView.findViewById(R.id.parent_layout) as LinearLayout
+        //val idItem: TextView = itemView.findViewById(R.id.txtview_produkid) as TextView
+        val idItem: TextView = itemView.txtview_produkid as TextView
+        val warnaItem: TextView = itemView.txtview_Warna as TextView
+        val ukuranItem: TextView = itemView.txtview_Ukuran as TextView
+        val jumlahItem: TextView = itemView.txtview_Jumlah as TextView
+        val keteranganItem: TextView = itemView.txtview_Keterangan as TextView
+        val parentLayout: LinearLayout = itemView.parent_layout as LinearLayout
         fun Click(intent: Intent, context: Context){
             parentLayout.setOnClickListener {
                 context.startActivity(intent)
