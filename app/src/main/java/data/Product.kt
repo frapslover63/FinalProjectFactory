@@ -1,6 +1,6 @@
 package data
 
-class Product{
+open class Product{
     var idToko: Int
     var jumlah: Int
     var warna: String
