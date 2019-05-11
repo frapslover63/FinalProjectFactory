@@ -13,6 +13,8 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:usesCleartextTraffic="true">
+        <activity android:name=".LaporanDatePickerActivity">
+        </activity>
         <activity android:name=".NewModelActivity">
         </activity>
         <activity android:name=".NewStockOption">

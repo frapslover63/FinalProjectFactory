@@ -35,7 +35,7 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/circle"
                     android:padding="10dp"
-                    android:src="@drawable/stocklogo"
+                    android:src="@drawable/reportlogo"
                     android:tint="@color/white"/>
             <TextView
                     android:id="@+id/textJudulLaporan"

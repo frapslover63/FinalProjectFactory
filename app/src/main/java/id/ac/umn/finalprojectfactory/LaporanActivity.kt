@@ -4,7 +4,6 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_laporan.*
-import kotlinx.android.synthetic.main.activity_main.*
 
 class LaporanActivity : AppCompatActivity() {
 
@@ -13,11 +12,11 @@ class LaporanActivity : AppCompatActivity() {
         setContentView(R.layout.activity_laporan)
 
         cardviewLaporanToko.setOnClickListener {
-            val intent = Intent(this@LaporanActivity, ListLaporanActivity::class.java)
+            val intent = Intent(this@LaporanActivity, LaporanDatePickerActivity::class.java)
             startActivity(intent)
         }
         cardviewLaporanPabrik.setOnClickListener{
-            val intent = Intent(this@LaporanActivity, ListLaporanActivity::class.java)
+            val intent = Intent(this@LaporanActivity, LaporanDatePickerActivity::class.java)
             startActivity(intent)
         }
     }
