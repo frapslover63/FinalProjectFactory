@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.activity_detail_item_toko.*
 
 class DetailItemPabrikActivity : AppCompatActivity() {
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_item_pabrik)

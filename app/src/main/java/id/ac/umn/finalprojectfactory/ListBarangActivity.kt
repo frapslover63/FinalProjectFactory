@@ -48,6 +48,7 @@ class ListBarangActivity : AppCompatActivity(), Url, CustomParameter {
                 val urlString: String = UrlGetStock() + params[0]
                 val urlConnect: URL = URL(urlString)
 
+                Log.e("URL", urlString)
                 urlConnection = urlConnect.openConnection() as HttpURLConnection
 
                 urlConnection.requestMethod = "GET"

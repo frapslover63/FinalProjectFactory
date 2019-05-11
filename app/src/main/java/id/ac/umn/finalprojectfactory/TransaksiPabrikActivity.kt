@@ -4,10 +4,14 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.widget.LinearLayout
 import android.widget.Toast
 import data.Transaction
 import kotlinx.android.synthetic.main.activity_transaksi_pabrik.*
+import kotlinx.android.synthetic.main.activity_transaksi_pabrik.recyclerview_product
+import kotlinx.android.synthetic.main.activity_transaksi_pabrik_conf.*
 
 class TransaksiPabrikActivity : AppCompatActivity() {
 
@@ -16,6 +20,12 @@ class TransaksiPabrikActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transaksi_pabrik)
+
+        val layoutManager = LinearLayoutManager(this)
+
+        recyclerview_product.layoutManager = layoutManager
+        pAdapter = TransactionAdapter(transactionList, this)
+        recyclerview_product.adapter = pAdapter
 
         fabAdd.setOnClickListener {
             var empty:Boolean = false
@@ -54,8 +64,13 @@ class TransaksiPabrikActivity : AppCompatActivity() {
         }
 
         fabNext.setOnClickListener{
-            val intent = Intent(this@TransaksiPabrikActivity, TransaksiPabrikConfirmActivity::class.java)
-            startActivity(intent)
+            if(!transactionList.isEmpty()){
+                val intent = Intent(this@TransaksiPabrikActivity, TransaksiPabrikConfirmActivity::class.java)
+                startActivity(intent)
+            }
+            else{
+                Toast.makeText(this, "Transaction cannot be empty", Toast.LENGTH_LONG).show()
+            }
         }
     }
 }
