@@ -29,7 +29,7 @@
 
 
     <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerview_product"
+            android:id="@+id/recyclerview_product_conf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -45,7 +45,7 @@
             app:layout_constraintBottom_toTopOf="@+id/dtt_field_keterangan"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerview_product"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerview_product_conf"
             android:background="@drawable/stocklogo"/>
     <LinearLayout
             android:id="@+id/dtt_field_keterangan"

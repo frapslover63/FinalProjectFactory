@@ -5,17 +5,16 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
-import android.widget.LinearLayout
 import android.widget.Toast
+import com.google.gson.Gson
 import data.Transaction
 import kotlinx.android.synthetic.main.activity_transaksi_pabrik.*
-import kotlinx.android.synthetic.main.activity_transaksi_pabrik.recyclerview_product
-import kotlinx.android.synthetic.main.activity_transaksi_pabrik_conf.*
+import kotlinx.android.synthetic.main.activity_transaksi_pabrik.recyclerview_product_conf
 
 class TransaksiPabrikActivity : AppCompatActivity() {
 
     var transactionList: ArrayList<Transaction> = ArrayList()
+    lateinit var pAdapter: TransactionAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,9 +22,9 @@ class TransaksiPabrikActivity : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
 
-        recyclerview_product.layoutManager = layoutManager
+        recyclerview_product_conf.layoutManager = layoutManager
         pAdapter = TransactionAdapter(transactionList, this)
-        recyclerview_product.adapter = pAdapter
+        recyclerview_product_conf.adapter = pAdapter
 
         fabAdd.setOnClickListener {
             var empty:Boolean = false
@@ -60,12 +59,16 @@ class TransaksiPabrikActivity : AppCompatActivity() {
 
                 val transaction: Transaction = Transaction(1, jumlah, warna, ukuran, produkid, harga)
                 transactionList.add(transaction)
+                pAdapter.updateList(transactionList)
             }
         }
 
         fabNext.setOnClickListener{
             if(!transactionList.isEmpty()){
                 val intent = Intent(this@TransaksiPabrikActivity, TransaksiPabrikConfirmActivity::class.java)
+                val gson: Gson = Gson()
+                val json: String = gson.toJson(transactionList);
+                intent.putExtra("json", json);
                 startActivity(intent)
             }
             else{
