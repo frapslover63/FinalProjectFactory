@@ -145,7 +145,7 @@ class ListBarangActivity : AppCompatActivity(), Url, CustomParameter {
 
         productAdapter = ProductAdapter(dataList, this@ListBarangActivity)
 
-        recyclerView = findViewById(R.id.recyclerview_product)
+        recyclerView = findViewById(R.id.recyclerview_product_conf)
         val layoutManager : RecyclerView.LayoutManager = LinearLayoutManager(this@ListBarangActivity)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = productAdapter

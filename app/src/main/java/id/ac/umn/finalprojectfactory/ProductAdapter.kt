@@ -72,16 +72,20 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
     }
 
     fun updateList(newList: ArrayList<Product>, tipe: String){
-        tipeDetail = tipe
-        dataList = ArrayList()
-        dataList.addAll(newList)
-        notifyDataSetChanged()
+        if(newList.size > 0){
+            tipeDetail = tipe
+            dataList = ArrayList()
+            dataList.addAll(newList)
+            notifyDataSetChanged()
+        }
     }
 
     fun updateList(newList: ArrayList<Product>){
-        dataList = ArrayList()
-        dataList.addAll(newList)
-        notifyDataSetChanged()
+        if(newList.size > 0){
+            dataList = ArrayList()
+            dataList.addAll(newList)
+            notifyDataSetChanged()
+        }
     }
 
     class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

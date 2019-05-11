@@ -22,21 +22,21 @@ interface Url{
     }
 }
 
-interface CustomParameter{
+interface CustomParameter : Url{
     fun AuthParam(): String{
         return "?userName=MarioWibu&password=A559C7CA6258E603E59125333FFF381496982D96CFB54B691A5E84DBFDF2B475";
     }
 
     fun StartTransactionParam(): String{
-        return "?userName=MWB&Password=MWB";
+        return callUrlTrigger() + "?userName=MWB&Password=MWB";
     }
 
-    fun TransactionParam(id: String, data:String): String{
-        return "?transactionid="+id+"&jsonString="+data;
+    fun TransactionParam(): String{
+        return callUrlTransaction()
     }
 }
 
 
 private fun baseUrl(): String{
-    return "http://192.168.1.6";
+    return "http://192.168.0.24";
 }

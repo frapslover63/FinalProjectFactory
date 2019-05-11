@@ -29,11 +29,11 @@
 
 
     <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerview_product"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/recyclerview_product_conf"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginTop="16dp"
-
+            android:layout_marginBottom="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/dtt_idtranstoko"
@@ -42,10 +42,11 @@
             android:id="@+id/imgview_Verifikasi"
             android:layout_width="159dp"
             android:layout_height="165dp"
+            android:layout_marginBottom="10dp"
             app:layout_constraintBottom_toTopOf="@+id/dtt_field_keterangan"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/recyclerview_product"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerview_product_conf"
             android:background="@drawable/stocklogo"/>
     <LinearLayout
             android:id="@+id/dtt_field_keterangan"
@@ -57,7 +58,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgview_Verifikasi"
-            app:layout_constraintBottom_toTopOf="@+id/btnVerifikasi">
+            app:layout_constraintBottom_toTopOf="@+id/btnVerifikasi"
+            android:layout_marginBottom="10dp">
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -106,6 +108,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:text="Verifikasi" app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintVertical_bias="0.852"/>
+            android:layout_marginBottom="10dp"
+            android:text="Verifikasi"/>
 </android.support.constraint.ConstraintLayout>
