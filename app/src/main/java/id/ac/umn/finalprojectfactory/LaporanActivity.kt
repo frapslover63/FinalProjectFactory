@@ -13,10 +13,12 @@ class LaporanActivity : AppCompatActivity() {
 
         cardviewLaporanToko.setOnClickListener {
             val intent = Intent(this@LaporanActivity, LaporanDatePickerActivity::class.java)
+            intent.putExtra("tipe", "toko")
             startActivity(intent)
         }
         cardviewLaporanPabrik.setOnClickListener{
             val intent = Intent(this@LaporanActivity, LaporanDatePickerActivity::class.java)
+            intent.putExtra("tipe", "pabrik")
             startActivity(intent)
         }
     }
