@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
 import com.google.gson.Gson
 import data.Transaction
+import kotlinx.android.synthetic.main.activity_new_stock.*
 import kotlinx.android.synthetic.main.activity_transaksi_pabrik.*
 import kotlinx.android.synthetic.main.activity_transaksi_pabrik.recyclerview_product_conf
 
@@ -53,9 +54,15 @@ class TransaksiPabrikActivity : AppCompatActivity() {
             if(!empty){
                 val produkid:String = edt_produkid.text.toString()
                 val ukuran:Int = edt_Ukuran.text.toString().toInt()
-                val warna:String = edt_Ukuran.text.toString()
+                val warna:String = edt_Warna.text.toString()
                 val jumlah:Int = edt_Jumlah.text.toString().toInt()
                 val harga:Int = edt_HargaBeli.text.toString().toInt()
+
+                edt_produkid.text.clear()
+                edt_Ukuran.text.clear()
+                edt_Warna.text.clear()
+                edt_Jumlah.text.clear()
+                edt_HargaBeli.text.clear()
 
                 val transaction: Transaction = Transaction(1, jumlah, warna, ukuran, produkid, harga)
                 transactionList.add(transaction)
