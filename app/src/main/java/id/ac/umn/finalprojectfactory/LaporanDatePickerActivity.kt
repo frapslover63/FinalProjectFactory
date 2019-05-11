@@ -64,12 +64,12 @@ class LaporanDatePickerActivity : AppCompatActivity() {
         btnSearch.setOnClickListener(){
             if(tanggal1 && tanggal2){
                 val intent = Intent(this@LaporanDatePickerActivity, ListLaporanActivity::class.java)
-                intent.putExtra("tahunDari", tahunDari)
-                intent.putExtra("bulanDari", bulanDari)
-                intent.putExtra("hariDari", hariDari)
-                intent.putExtra("tahunSampai", tahunSampai)
-                intent.putExtra("bulanSampai", bulanSampai)
-                intent.putExtra("hariSampai", hariSampai)
+                intent.putExtra("tahunDari", tahunDari.toString())
+                intent.putExtra("bulanDari", bulanDari.toString())
+                intent.putExtra("hariDari", hariDari.toString())
+                intent.putExtra("tahunSampai", tahunSampai.toString())
+                intent.putExtra("bulanSampai", bulanSampai.toString())
+                intent.putExtra("hariSampai", hariSampai.toString())
                 intent.putExtra("tipe", tipe)
                 startActivity(intent)
             }

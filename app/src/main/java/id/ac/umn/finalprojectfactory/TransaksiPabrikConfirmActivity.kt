@@ -95,7 +95,8 @@ class TransaksiPabrikConfirmActivity : AppCompatActivity(), CustomParameter {
             start()
         }
 
-        val url = StartTransactionParam() + "&Company=" + c
+        val url = StartTransactionParam() + "&Company=" + c;
+        Log.e("URL", url)
 
         val request = StringRequest(Request.Method.GET, url,
             Response.Listener {
