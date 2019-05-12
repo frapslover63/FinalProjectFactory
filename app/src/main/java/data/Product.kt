@@ -14,4 +14,12 @@ open class Product{
         this.ukuran = ukuran
         this.produkId = produkId
     }
+
+    constructor (jumlah : Int, warna : String, ukuran : Int, produkId : String) {
+        this.idToko = 0
+        this.warna = warna
+        this.jumlah = jumlah
+        this.ukuran = ukuran
+        this.produkId = produkId
+    }
 }
