@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import data.Laporan
 import data.LaporanToko
 import kotlinx.android.synthetic.main.activity_detail_transaksi_toko.view.*
 import kotlinx.android.synthetic.main.laporan_pabrik.view.*
@@ -42,7 +43,7 @@ class LaporanAdapterToko : RecyclerView.Adapter<LaporanAdapterToko.LaporanTokoVi
         p0.status.text = laporanListToko.get(p1).status.toString()
         p0.totalHarga.text = laporanListToko.get(p1).totalHarga.toString()
 
-        intent = Intent(context, DetailTransaksiPabrikActivity::class.java)
+        intent = Intent(context, DetailTransaksiTokoActivity::class.java)
         intent. putExtra("ID", laporanListToko.get(p1).transactionId.toString())
 
         intent.putExtra("produkid", laporanListToko.get(p1).transactionId)
@@ -53,9 +54,17 @@ class LaporanAdapterToko : RecyclerView.Adapter<LaporanAdapterToko.LaporanTokoVi
         p0.Click(intent, context)
     }
 
+    fun updateList(newList: ArrayList<LaporanToko>){
+        if(newList.size > 0){
+            laporanListToko = ArrayList()
+            laporanListToko.addAll(newList)
+            notifyDataSetChanged()
+        }
+    }
+
 
     class LaporanTokoViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val transactionId: TextView = itemView.txtview_KodeTransaksiToko
+        val transactionId: TextView = itemView.txtview_transaksitokoid
         val tanggal: TextView = itemView.txtview_Tanggal
         val status: TextView = itemView.txtview_Status
         val totalHarga: TextView = itemView.txtview_Totalharga

@@ -134,7 +134,7 @@ class ListLaporanActivity : AppCompatActivity(), Url, CustomParameter {
 
                         laporanListToko.add(laporantoko)
                     }
-                    //lAdapter.updateList(laporanListToko)
+                    tAdapter.updateList(laporanListToko)
                 }
             },
             Response.ErrorListener {
