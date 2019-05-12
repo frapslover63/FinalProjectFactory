@@ -11,12 +11,14 @@ import com.android.volley.toolbox.BasicNetwork
 import com.android.volley.toolbox.DiskBasedCache
 import com.android.volley.toolbox.HurlStack
 import com.android.volley.toolbox.StringRequest
+import com.google.gson.JsonObject
 import data.CustomParameter
 import data.Laporan
 import data.Product
 import kotlinx.android.synthetic.main.activity_detail_transaksi_pabrik.*
 import org.json.JSONArray
 import org.json.JSONObject
+import kotlin.math.log
 import kotlin.math.tan
 
 class DetailTransaksiPabrikActivity : AppCompatActivity(), CustomParameter {
@@ -25,7 +27,7 @@ class DetailTransaksiPabrikActivity : AppCompatActivity(), CustomParameter {
     lateinit var lAdapter: ProductAdapter
     lateinit var id: String
     lateinit var tanggal: String
-    lateinit var namaCompany: String
+    var totalHarga: Int = 0
     var total: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,9 +36,9 @@ class DetailTransaksiPabrikActivity : AppCompatActivity(), CustomParameter {
 
         id = intent.getStringExtra("ID")
         tanggal = intent.getStringExtra("tanggal")
-        namaCompany = intent.getStringExtra("namaCompany")
+        totalHarga = intent.getStringExtra("totalHarga").toInt()
         val url: String = reportPabrikParamDetail(id)
-        fetchDataToko(url, tanggal, namaCompany)
+        fetchDataPabrik(url, tanggal)
         lAdapter = ProductAdapter(productList, this)
         recyclerview_product_conf.adapter = lAdapter
 
@@ -44,7 +46,7 @@ class DetailTransaksiPabrikActivity : AppCompatActivity(), CustomParameter {
         txtview_Totalharga.text = total.toString()
     }
 
-    fun fetchDataToko(url: String, tanggal: String, namaCompany: String){
+    fun fetchDataPabrik(url: String, tanggal: String){
         val cache = DiskBasedCache(cacheDir, 1024*1024);
         val network = BasicNetwork(HurlStack())
 
@@ -57,12 +59,11 @@ class DetailTransaksiPabrikActivity : AppCompatActivity(), CustomParameter {
             Response.Listener<String>{
                     response ->
                 val res = response.toString()
-                Log.e("Response Cantiq", res)
                 val result: JSONObject = JSONObject(res)
                 val statusCode: String = result.getString("success");
                 if(statusCode.equals("Success")){
-                    Log.e("Response Cantiq", result.getString("data"))
-                    val jsonArray: JSONArray = result.getJSONArray("data")
+                    val objectData: JSONObject = result.getJSONObject("data")
+                    val jsonArray: JSONArray = objectData.getJSONArray("data")
                     for(i: Int in 0 until (jsonArray.length())){
                         val theData: JSONObject = jsonArray.getJSONObject(i)
 
@@ -72,8 +73,6 @@ class DetailTransaksiPabrikActivity : AppCompatActivity(), CustomParameter {
                             theData.getInt("ukuran"),
                             theData.getString("produkid")
                         )
-
-                        total += theData.getInt("harga")
                         productList.add(product)
                     }
                     lAdapter.updateList(productList)

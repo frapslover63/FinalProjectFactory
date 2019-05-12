@@ -73,11 +73,9 @@ class ListLaporanActivity : AppCompatActivity(), Url, CustomParameter {
             Response.Listener<String>{
                 response ->
                     val res = response.toString()
-                    Log.e("Response Cantiq", res)
                     val result: JSONObject = JSONObject(res)
                     val statusCode: String = result.getString("success");
                 if(statusCode.equals("Success")){
-                    Log.e("Response Cantiq", result.getString("data"))
                     val jsonArray: JSONArray = result.getJSONArray("data")
                     for(i: Int in 0 until (jsonArray.length())){
                         val theData: JSONObject = jsonArray.getJSONObject(i)
@@ -114,11 +112,9 @@ class ListLaporanActivity : AppCompatActivity(), Url, CustomParameter {
             Response.Listener<String>{
                     response ->
                 val res = response.toString()
-                Log.e("Response Cantiq", res)
                 val result: JSONObject = JSONObject(res)
                 val statusCode: String = result.getString("success");
                 if(statusCode.equals("Success")){
-                    Log.e("Response Cantiq", result.getString("data"))
                     val jsonArray: JSONArray = result.getJSONArray("data")
                     for(i: Int in 0 until (jsonArray.length())){
                         val theData: JSONObject = jsonArray.getJSONObject(i)

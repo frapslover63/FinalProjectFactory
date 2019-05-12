@@ -30,11 +30,11 @@ interface Url{
     }
 
     fun callUrlLaporanTokoDetail(): String{
-        return baseUrl()+"/transactionReport/detailreportPabrik.php"
+        return baseUrl()+"/transactionReport/detailreportToko.php"
     }
 
     fun callUrlLaporanPabrikDetail(): String{
-        return baseUrl()+"/transactionReport/detailreportToko.php"
+        return baseUrl()+"/transactionReport/detailreportPabrik.php"
     }
 }
 
