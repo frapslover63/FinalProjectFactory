@@ -2,7 +2,7 @@
     <string name="app_name">FinalProjectFactory</string>
     <string name="shop_name">TokoJustin</string>
     <string name="cek_barang">Cek Barang</string>
-    <string name="set_stock">Set Stock</string>
+    <string name="set_stock">Add Stock</string>
     <string name="edit_stock">Edit Stock</string>
     <string name="search_text">Search</string>
     <string name="kode_sendal">Kode Sendal</string>
