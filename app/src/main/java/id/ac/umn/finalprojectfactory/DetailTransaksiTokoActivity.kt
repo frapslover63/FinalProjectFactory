@@ -14,13 +14,17 @@ import com.android.volley.toolbox.StringRequest
 import data.CustomParameter
 import data.Product
 import kotlinx.android.synthetic.main.activity_detail_transaksi_pabrik.*
+import kotlinx.android.synthetic.main.activity_detail_transaksi_pabrik.recyclerview_product_conf
+import kotlinx.android.synthetic.main.activity_detail_transaksi_pabrik.txtview_Tanggal
+import kotlinx.android.synthetic.main.activity_detail_transaksi_pabrik.txtview_Totalharga
+import kotlinx.android.synthetic.main.activity_detail_transaksi_toko.*
 import org.json.JSONArray
 import org.json.JSONObject
 
 class DetailTransaksiTokoActivity : AppCompatActivity(), CustomParameter {
 
     var productList: ArrayList<Product> = ArrayList()
-    lateinit var lAdapter: ProductAdapter
+    lateinit var lAdapter: ProductAdapterDetail
     lateinit var id: String
     lateinit var tanggal: String
     var totalHarga: Int = 0
@@ -35,7 +39,7 @@ class DetailTransaksiTokoActivity : AppCompatActivity(), CustomParameter {
         totalHarga = intent.getStringExtra("totalHarga").toInt()
         val url: String = reportTokoParamDetail(id)
         fetchDataToko(url, tanggal)
-        lAdapter = ProductAdapter(productList, this)
+        lAdapter = ProductAdapterDetail(productList, this)
         recyclerview_product_conf.adapter = lAdapter
 
         txtview_Tanggal.text = tanggal

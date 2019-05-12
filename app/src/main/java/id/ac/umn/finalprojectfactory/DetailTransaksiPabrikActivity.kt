@@ -24,7 +24,7 @@ import kotlin.math.tan
 class DetailTransaksiPabrikActivity : AppCompatActivity(), CustomParameter {
 
     var productList: ArrayList<Product> = ArrayList()
-    lateinit var lAdapter: ProductAdapter
+    lateinit var lAdapter: ProductAdapterDetail
     lateinit var id: String
     lateinit var tanggal: String
     var totalHarga: Int = 0
@@ -39,7 +39,7 @@ class DetailTransaksiPabrikActivity : AppCompatActivity(), CustomParameter {
         totalHarga = intent.getStringExtra("totalHarga").toInt()
         val url: String = reportPabrikParamDetail(id)
         fetchDataPabrik(url, tanggal)
-        lAdapter = ProductAdapter(productList, this)
+        lAdapter = ProductAdapterDetail(productList, this)
         recyclerview_product_conf.adapter = lAdapter
 
         txtview_Tanggal.text = tanggal

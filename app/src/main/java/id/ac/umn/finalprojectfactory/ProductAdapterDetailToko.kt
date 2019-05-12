@@ -9,8 +9,9 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import data.Product
 import kotlinx.android.synthetic.main.product_pabrik_laporan.view.*
+import kotlinx.android.synthetic.main.product_toko_laporan.view.*
 
-class ProductAdapterDetail : RecyclerView.Adapter<ProductAdapterDetail.ProductDetailViewHolder> {
+class ProductAdapterDetailToko : RecyclerView.Adapter<ProductAdapterDetailToko.ProductDetailTokoViewHolder> {
     private var dataList: ArrayList<Product>
     private var context: Context
     private var tipeDetail: String = ""
@@ -20,10 +21,10 @@ class ProductAdapterDetail : RecyclerView.Adapter<ProductAdapterDetail.ProductDe
         this.context = context
     }
 
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ProductDetailViewHolder {
+    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ProductDetailTokoViewHolder {
         val layoutInflater: LayoutInflater = LayoutInflater.from(p0.context)
-        val view: View = layoutInflater.inflate(R.layout.product_pabrik_laporan, p0, false)
-        return ProductDetailViewHolder(view)
+        val view: View = layoutInflater.inflate(R.layout.product_toko_laporan, p0, false)
+        return ProductDetailTokoViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -34,7 +35,7 @@ class ProductAdapterDetail : RecyclerView.Adapter<ProductAdapterDetail.ProductDe
         updateList(filteredList)
     }
 
-    override fun onBindViewHolder(p0: ProductDetailViewHolder, p1: Int) {
+    override fun onBindViewHolder(p0: ProductDetailTokoViewHolder, p1: Int) {
         p0.idItem.text = dataList.get(p1).produkId
         p0.warna.text = dataList.get(p1).warna
         p0.ukuran.text = dataList.get(p1).ukuran.toString()
@@ -58,12 +59,13 @@ class ProductAdapterDetail : RecyclerView.Adapter<ProductAdapterDetail.ProductDe
         }
     }
 
-    class ProductDetailViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val idItem: TextView = itemView.txtview_produkid_laporan1
-        val ukuran: TextView = itemView.txtview_Ukuran_laporan1
-        val warna: TextView = itemView.txtview_Warna_laporan1
-        val jumlah: TextView = itemView.txtview_Jumlah_laporan1
-        val parentLayout: LinearLayout = itemView.parent_layout
+    class ProductDetailTokoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val idItem: TextView = itemView.txtview_produkid_laporan
+        val ukuran: TextView = itemView.txtview_Ukuran_laporan
+        val warna: TextView = itemView.txtview_Warna_laporan
+        val jumlah: TextView = itemView.txtview_Jumlah_laporan
+        val harga: TextView = itemView.txtview_HargaJual_laporan
+        val parentLayout: LinearLayout = itemView.parent_layout1
 //        fun Click(intent: Intent, context: Context){
 //            parentLayout.setOnClickListener {
 //                context.startActivity(intent)
