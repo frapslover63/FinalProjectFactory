@@ -14,6 +14,7 @@ import com.android.volley.toolbox.HurlStack
 import com.android.volley.toolbox.StringRequest
 import data.CustomParameter
 import data.Laporan
+import data.LaporanToko
 import data.Product
 import data.Url
 import kotlinx.android.synthetic.main.activity_list_laporan.*
@@ -23,6 +24,7 @@ import org.json.JSONObject
 class ListLaporanActivity : AppCompatActivity(), Url, CustomParameter {
 
     var laporanList: ArrayList<Laporan> = ArrayList()
+    var laporanListToko: ArrayList<LaporanToko> = ArrayList()
     lateinit var lAdapter: LaporanAdapter
     lateinit var tipe: String
     lateinit var url: String;
@@ -118,19 +120,19 @@ class ListLaporanActivity : AppCompatActivity(), Url, CustomParameter {
                 if(statusCode.equals("Success")){
                     Log.e("Response Cantiq", result.getString("data"))
                     val jsonArray: JSONArray = result.getJSONArray("data")
-//                    for(i: Int in 0 until (jsonArray.length())){
-//                        val theData: JSONObject = jsonArray.getJSONObject(i)
-//
-//                        val laporan: Laporan = Laporan(
-//                            theData.getInt("transaksipabrikid"),
-//                            theData.getString("times"),
-//                            theData.getString("company"),
-//                            theData.getInt("total")
-//                        )
-//
-//                        laporanList.add(laporan)
-//                    }
-//                    lAdapter.updateList(laporanList)
+                    for(i: Int in 0 until (jsonArray.length())){
+                        val theData: JSONObject = jsonArray.getJSONObject(i)
+
+                        val laporantoko: LaporanToko = LaporanToko(
+                            theData.getInt("transaksitokoid"),
+                            theData.getString("times"),
+                            theData.getInt("status"),
+                            theData.getInt("total")
+                        )
+
+                        laporanListToko.add(laporantoko)
+                    }
+                    //lAdapter.updateList(laporanListToko)
                 }
             },
             Response.ErrorListener {

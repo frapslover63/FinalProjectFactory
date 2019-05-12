@@ -58,14 +58,14 @@ class LaporanAdapter : RecyclerView.Adapter<LaporanAdapter.LaporanViewHolder> {
         p0.Click(intent, context)
     }
 
-    fun updateList(newList: ArrayList<Laporan>, tipe: String){
-        if(newList.size > 0){
-            tipeDetail = tipe
-            laporanList = ArrayList()
-            laporanList.addAll(newList)
-            notifyDataSetChanged()
-        }
-    }
+//    fun updateList(newList: ArrayList<Laporan>, tipe: String){
+//        if(newList.size > 0){
+//            tipeDetail = tipe
+//            laporanList = ArrayList()
+//            laporanList.addAll(newList)
+//            notifyDataSetChanged()
+//        }
+//    }
 
     fun updateList(newList: ArrayList<Laporan>){
         if(newList.size > 0){

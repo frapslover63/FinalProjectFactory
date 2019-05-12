@@ -41,9 +41,9 @@ class LaporanDatePickerActivity : AppCompatActivity() {
 
         txt_DariTanggal.setOnClickListener(){
             val datePickerDari = DatePickerDialog(this,DatePickerDialog.OnDateSetListener { view, InputYearFrom, InputMonthFrom, InputDayOfMonthFrom ->
-                txt_DariTanggal.setText(""+InputYearFrom+"/"+InputMonthFrom+"/"+InputDayOfMonthFrom)
+                txt_DariTanggal.setText(""+InputYearFrom+"/"+(InputMonthFrom+1)+"/"+InputDayOfMonthFrom)
                 tahunDari = InputYearFrom
-                bulanDari = InputMonthFrom
+                bulanDari = InputMonthFrom+1
                 hariDari = InputDayOfMonthFrom
                 tanggal1 = true
             },yearFrom,monthFrom,dayFrom)
@@ -52,9 +52,9 @@ class LaporanDatePickerActivity : AppCompatActivity() {
 
         txt_SampaiTanggal.setOnClickListener(){
             val datePickerSampai = DatePickerDialog(this,DatePickerDialog.OnDateSetListener { view, InputYearTill, InputMonthTill, InputDayOfMonthTill ->
-                txt_SampaiTanggal.setText(""+InputYearTill+"/"+InputMonthTill+"/"+InputDayOfMonthTill)
+                txt_SampaiTanggal.setText(""+InputYearTill+"/"+(InputMonthTill+1)+"/"+InputDayOfMonthTill)
                 tahunSampai = InputYearTill
-                bulanSampai = InputMonthTill
+                bulanSampai = InputMonthTill+1
                 hariSampai = InputDayOfMonthTill
                 tanggal2 = true
             },yearTill,monthTill,dayTill)
