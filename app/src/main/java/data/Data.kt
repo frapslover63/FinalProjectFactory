@@ -20,6 +20,15 @@ interface Url{
     fun callUrlNewProductDetail(): String{
         return baseUrl()+"/insertData/insertStockDetail.php"
     }
+
+    fun callUrlLaporanToko(): String{
+        return baseUrl()+"/transactionReport/reportToko.php";
+    }
+
+    fun callUrlLaporanPabrik(): String{
+        return baseUrl()+"/transactionReport/reportPabrik.php";
+    }
+
 }
 
 interface CustomParameter : Url{
@@ -34,9 +43,17 @@ interface CustomParameter : Url{
     fun TransactionParam(): String{
         return callUrlTransaction()
     }
+
+    fun reportTokoParam(fromDate: String, toDate: String): String{
+        return callUrlLaporanToko()+"?fromDate="+fromDate+"&toDate="+toDate;
+    }
+
+    fun reportPabrikParam(fromDate: String, toDate: String): String{
+        return callUrlLaporanPabrik()+"?fromDate="+fromDate+"&toDate="+toDate;
+    }
 }
 
 
 private fun baseUrl(): String{
-    return "http://192.168.0.24";
+    return "http://192.168.1.6";
 }
