@@ -44,12 +44,9 @@ class LaporanAdapterToko : RecyclerView.Adapter<LaporanAdapterToko.LaporanTokoVi
         p0.totalHarga.text = laporanListToko.get(p1).totalHarga.toString()
 
         intent = Intent(context, DetailTransaksiTokoActivity::class.java)
-        intent. putExtra("ID", laporanListToko.get(p1).transactionId.toString())
-
-        intent.putExtra("produkid", laporanListToko.get(p1).transactionId)
-        intent.putExtra("warna", laporanListToko.get(p1).tanggal)
-        intent.putExtra("ukuran", laporanListToko.get(p1).status)
-        intent.putExtra("jumlah", laporanListToko.get(p1).totalHarga)
+        intent.putExtra("ID", laporanListToko.get(p1).transactionId.toString())
+        intent.putExtra("status", laporanListToko.get(p1).status)
+        intent.putExtra("tanggal", laporanListToko.get(p1).tanggal)
         //intent.putExtras(pass)
         p0.Click(intent, context)
     }

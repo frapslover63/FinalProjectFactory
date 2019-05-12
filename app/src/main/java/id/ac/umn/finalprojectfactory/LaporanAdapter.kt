@@ -17,15 +17,13 @@ class LaporanAdapter : RecyclerView.Adapter<LaporanAdapter.LaporanViewHolder> {
 
     private var laporanList: ArrayList<Laporan> = ArrayList()
     private var context: Context
-    private var tipeDetail: String = ""
     var intent: Intent = Intent()
 
     private var data: Int = 1 ;
 
-    constructor(dataList: ArrayList<Laporan>, context: Context, type: String){
+    constructor(dataList: ArrayList<Laporan>, context: Context){
         this.laporanList = dataList
         this.context = context
-        this.tipeDetail = type
     }
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): LaporanViewHolder{
@@ -49,12 +47,9 @@ class LaporanAdapter : RecyclerView.Adapter<LaporanAdapter.LaporanViewHolder> {
         p0.totalHarga.text = laporanList.get(p1).totalHarga.toString()
 
         intent = Intent(context, DetailTransaksiPabrikActivity::class.java)
-        intent. putExtra("ID", laporanList.get(p1).transactionId.toString())
-
-        intent.putExtra("produkid", laporanList.get(p1).transactionId)
-        intent.putExtra("warna", laporanList.get(p1).tanggal)
-        intent.putExtra("ukuran", laporanList.get(p1).namaCompany)
-        intent.putExtra("jumlah", laporanList.get(p1).totalHarga)
+        intent.putExtra("ID", laporanList.get(p1).transactionId.toString())
+        intent.putExtra("namaCompany", laporanList.get(p1).namaCompany)
+        intent.putExtra("tanggal", laporanList.get(p1).tanggal)
         //intent.putExtras(pass)
         p0.Click(intent, context)
     }

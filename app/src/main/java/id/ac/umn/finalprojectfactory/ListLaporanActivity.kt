@@ -33,8 +33,6 @@ class ListLaporanActivity : AppCompatActivity(), Url, CustomParameter {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_laporan)
 
-
-
         val dayStart: String = intent.getStringExtra("hariDari")
         val monthStart: String = intent.getStringExtra("bulanDari")
         val yearStart: String = intent.getStringExtra("tahunDari")
@@ -50,9 +48,9 @@ class ListLaporanActivity : AppCompatActivity(), Url, CustomParameter {
 
         tipe = intent.getStringExtra("tipe")
         if(tipe.equals("pabrik")){
-            url = reportPabrikParam(dateFrom,dateTo);
+            url = reportPabrikParam(dateFrom,dateTo)
             fetchDataPabrik(url)
-            lAdapter = LaporanAdapter(laporanList, this, tipe)
+            lAdapter = LaporanAdapter(laporanList, this)
             recyclerview_laporan.adapter = lAdapter
         }else if(tipe.equals("toko")){
             url = reportTokoParam(dateFrom,dateTo)
