@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import data.Laporan
+import data.LaporanToko
 import kotlinx.android.synthetic.main.laporan_pabrik.view.*
 import kotlinx.android.synthetic.main.product_pabrik.view.*
 
@@ -17,15 +18,19 @@ class LaporanAdapter : RecyclerView.Adapter<LaporanAdapter.LaporanViewHolder> {
     private var laporanList: ArrayList<Laporan> = ArrayList()
     private var context: Context
     private var tipeDetail: String = ""
+    var intent: Intent = Intent()
 
-    constructor(dataList: ArrayList<Laporan>, context: Context){
+    private var data: Int = 1 ;
+
+    constructor(dataList: ArrayList<Laporan>, context: Context, type: String){
         this.laporanList = dataList
         this.context = context
+        this.tipeDetail = type
     }
 
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): LaporanViewHolder {
+    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): LaporanViewHolder{
         val layoutInflater: LayoutInflater = LayoutInflater.from(p0.context)
-        val view: View = layoutInflater.inflate(R.layout.product_pabrik, p0, false)
+        val view: View = layoutInflater.inflate(R.layout.laporan_pabrik, p0, false)
         return LaporanViewHolder(view)
     }
 
@@ -38,18 +43,14 @@ class LaporanAdapter : RecyclerView.Adapter<LaporanAdapter.LaporanViewHolder> {
     }
 
     override fun onBindViewHolder(p0: LaporanViewHolder, p1: Int) {
-        p0.transactionId.text = "Product ID : " + laporanList.get(p1).transactionId
-        p0.tanggal.text = "Warna : " + laporanList.get(p1).tanggal
-        p0.namaCompany.text = "Ukuran : " + laporanList.get(p1).namaCompany
-        p0.totalHarga.text = "Jumlah : " + laporanList.get(p1).totalHarga
-        var intent: Intent = Intent()
+        p0.transactionId.text = "Transaction ID" + laporanList.get(p1).transactionId
+        p0.tanggal.text = laporanList.get(p1).tanggal
+        p0.namaCompany.text = laporanList.get(p1).namaCompany
+        p0.totalHarga.text = laporanList.get(p1).totalHarga.toString()
 
-        if(tipeDetail.equals("toko")){
-            intent = Intent(context, DetailItemTokoActivity::class.java)
-        }
-        else if(tipeDetail.equals("pabrik")){
-            intent = Intent(context, DetailItemPabrikActivity::class.java)
-        }
+        intent = Intent(context, DetailTransaksiPabrikActivity::class.java)
+        intent. putExtra("ID", laporanList.get(p1).transactionId.toString())
+
         intent.putExtra("produkid", laporanList.get(p1).transactionId)
         intent.putExtra("warna", laporanList.get(p1).tanggal)
         intent.putExtra("ukuran", laporanList.get(p1).namaCompany)
@@ -80,7 +81,7 @@ class LaporanAdapter : RecyclerView.Adapter<LaporanAdapter.LaporanViewHolder> {
         val tanggal: TextView = itemView.txtview_Tanggal
         val namaCompany: TextView = itemView.txtview_CompanyName
         val totalHarga: TextView = itemView.txtview_Totalharga
-        val parentLayout: LinearLayout = itemView.parent_layout
+        val parentLayout: LinearLayout = itemView.layout_papa
         fun Click(intent: Intent, context: Context){
             parentLayout.setOnClickListener {
                 context.startActivity(intent)

@@ -26,16 +26,14 @@ class ListLaporanActivity : AppCompatActivity(), Url, CustomParameter {
     var laporanList: ArrayList<Laporan> = ArrayList()
     var laporanListToko: ArrayList<LaporanToko> = ArrayList()
     lateinit var lAdapter: LaporanAdapter
+    lateinit var tAdapter: LaporanAdapterToko
     lateinit var tipe: String
     lateinit var url: String;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_laporan)
 
-        val layoutManager = LinearLayoutManager(this)
-        recyclerview_laporan.layoutManager = layoutManager
-        lAdapter = LaporanAdapter(laporanList, this)
-        recyclerview_laporan.adapter = lAdapter
+
 
         val dayStart: String = intent.getStringExtra("hariDari")
         val monthStart: String = intent.getStringExtra("bulanDari")
@@ -47,18 +45,22 @@ class ListLaporanActivity : AppCompatActivity(), Url, CustomParameter {
         val dateFrom: String = yearStart+"/"+monthStart+"/"+dayStart
         val dateTo: String = yearTo+"/"+monthTo+"/"+dayTo
 
+        val layoutManager = LinearLayoutManager(this)
+        recyclerview_laporan.layoutManager = layoutManager
+
         tipe = intent.getStringExtra("tipe")
         if(tipe.equals("pabrik")){
             url = reportPabrikParam(dateFrom,dateTo);
             fetchDataPabrik(url)
+            lAdapter = LaporanAdapter(laporanList, this, tipe)
+            recyclerview_laporan.adapter = lAdapter
         }else if(tipe.equals("toko")){
             url = reportTokoParam(dateFrom,dateTo)
             fetchDataToko(url)
+            tAdapter = LaporanAdapterToko(laporanListToko, this)
+            recyclerview_laporan.adapter = tAdapter
         }
         Toast.makeText(this, url, Toast.LENGTH_LONG).show()
-
-
-
     }
 
     fun fetchDataPabrik(url: String){
