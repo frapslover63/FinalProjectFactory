@@ -21,5 +21,9 @@ class CekBarangActivity : AppCompatActivity() {
             intent.putExtra("tipe", "pabrik")
             startActivity(intent)
         }
+        cardviewUbahHarga.setOnClickListener{
+            val intent = Intent(this@CekBarangActivity, UbahHargaActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
