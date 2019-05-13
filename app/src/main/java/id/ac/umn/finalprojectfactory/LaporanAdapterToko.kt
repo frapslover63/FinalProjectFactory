@@ -40,7 +40,12 @@ class LaporanAdapterToko : RecyclerView.Adapter<LaporanAdapterToko.LaporanTokoVi
     override fun onBindViewHolder(p0: LaporanTokoViewHolder, p1: Int) {
         p0.transactionId.text = "Transaction ID" + laporanListToko.get(p1).transactionId
         p0.tanggal.text = laporanListToko.get(p1).tanggal
-        p0.status.text = laporanListToko.get(p1).status.toString()
+        if(laporanListToko.get(p1).status == 1){
+            p0.status.text = "Verified"
+        }
+        else{
+            p0.status.text = "Unverified"
+        }
         p0.totalHarga.text = laporanListToko.get(p1).totalHarga.toString()
 
         intent = Intent(context, DetailTransaksiTokoActivity::class.java)
@@ -58,7 +63,6 @@ class LaporanAdapterToko : RecyclerView.Adapter<LaporanAdapterToko.LaporanTokoVi
             notifyDataSetChanged()
         }
     }
-
 
     class LaporanTokoViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val transactionId: TextView = itemView.txtview_transaksitokoid
