@@ -44,4 +44,5 @@
     <string name="StockOptions">Stock Options</string>
     <string name="newProduct">Barang Baru</string>
     <string name="addModel">Tambah Model</string>
+    <string name="ubah_harga">Ubah Harga</string>
 </resources>

@@ -27,5 +27,9 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, TransaksiPabrikActivity::class.java)
             startActivity(intent)
         }
+        cardviewUbahHarga.setOnClickListener{
+            val intent = Intent(this@MainActivity, UbahHargaActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
