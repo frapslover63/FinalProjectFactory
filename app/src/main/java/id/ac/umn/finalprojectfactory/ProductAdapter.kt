@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import data.DetailProduct
 import data.Product
 import kotlinx.android.synthetic.main.product_pabrik.view.*
 import kotlinx.android.synthetic.main.product_toko.view.*
@@ -21,11 +22,11 @@ import kotlinx.android.synthetic.main.product_toko.view.txtview_produkid
 
 
 class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
-    private var dataList: ArrayList<Product>
+    private var dataList: ArrayList<DetailProduct>
     private var context: Context
     private var tipeDetail: String = ""
 
-    constructor(dataList: ArrayList<Product>, context: Context){
+    constructor(dataList: ArrayList<DetailProduct>, context: Context){
         this.dataList = dataList
         this.context = context
     }
@@ -34,21 +35,23 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
         val layoutInflater: LayoutInflater = LayoutInflater.from(p0.context)
         val view: View = layoutInflater.inflate(R.layout.product_pabrik, p0, false)
         return ProductViewHolder(view)
+
     }
 
     override fun getItemCount(): Int {
         return dataList.size
     }
 
-    fun FilterList(filteredList: ArrayList<Product>){
+    fun FilterList(filteredList: ArrayList<DetailProduct>){
         updateList(filteredList)
     }
 
     override fun onBindViewHolder(p0: ProductViewHolder, p1: Int) {
-        p0.idItem.text = "Product ID : " + dataList.get(p1).produkId
-        p0.warnaItem.text = "Warna : " + dataList.get(p1).warna
-        p0.ukuranItem.text = "Ukuran : " + dataList.get(p1).ukuran
-        p0.jumlahItem.text = "Jumlah : " + dataList.get(p1).jumlah
+        p0.idItem.text = dataList.get(p1).productId
+        p0.warnaItem.text = dataList.get(p1).warna
+        p0.ukuranItem.text = dataList.get(p1).ukuran.toString()
+        p0.jumlahItem.text = dataList.get(p1).jumlah.toString()
+        p0.keteranganItem.text = dataList.get(p1).keterangan
         var intent: Intent = Intent()
 
 //        val pass: Bundle = Bundle()
@@ -63,7 +66,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
         else if(tipeDetail.equals("pabrik")){
             intent = Intent(context, DetailItemPabrikActivity::class.java)
         }
-        intent.putExtra("produkid", dataList.get(p1).produkId)
+        intent.putExtra("produkid", dataList.get(p1).productId)
         intent.putExtra("warna", dataList.get(p1).warna)
         intent.putExtra("ukuran", dataList.get(p1).ukuran.toString())
         intent.putExtra("jumlah", dataList.get(p1).jumlah.toString())
@@ -71,7 +74,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
         p0.Click(intent, context)
     }
 
-    fun updateList(newList: ArrayList<Product>, tipe: String){
+    fun updateList(newList: ArrayList<DetailProduct>, tipe: String){
         if(newList.size > 0){
             tipeDetail = tipe
             dataList = ArrayList()
@@ -80,7 +83,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
         }
     }
 
-    fun updateList(newList: ArrayList<Product>){
+    fun updateList(newList: ArrayList<DetailProduct>){
         if(newList.size > 0){
             dataList = ArrayList()
             dataList.addAll(newList)

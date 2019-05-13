@@ -23,14 +23,15 @@ import java.net.MalformedURLException
 import java.net.URL
 import data.Url
 import data.CustomParameter
+import data.DetailProduct
 import kotlinx.android.synthetic.main.activity_list_barang.*
 
 class ListBarangActivity : AppCompatActivity(), Url, CustomParameter {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var productAdapter: ProductAdapter
-    private var dataList: ArrayList<Product> = ArrayList()
-    private var defaultDataList: ArrayList<Product> = ArrayList()
+    private var dataList: ArrayList<DetailProduct> = ArrayList()
+    private var defaultDataList: ArrayList<DetailProduct> = ArrayList()
 
     private lateinit var txtSearch: EditText
 
@@ -81,18 +82,19 @@ class ListBarangActivity : AppCompatActivity(), Url, CustomParameter {
                     for(i: Int in 0 until (jsonArray.length())){
                         val theData: JSONObject = jsonArray.getJSONObject(i)
 
-                        val product: Product = Product(
-                            theData.getInt("tokoid"),
-                            theData.getInt("jumlah"),
-                            theData.getString("warna"),
+                        val product: DetailProduct = DetailProduct(
+                            theData.getString("produkid"),
                             theData.getInt("ukuran"),
-                            theData.getString("produkid")
+                            theData.getString("warna"),
+                            theData.getInt("jumlah"),
+                            theData.getString("keterangan"),
+                            theData.getInt("tokoid")
                         )
-                        if(tipe.getStringExtra("tipe").equals("toko") && product.idToko == 2){
+                        if(tipe.getStringExtra("tipe").equals("toko") && product.tokoId == 2){
                             dataList.add(product)
                             defaultDataList.add(product)
                         }
-                        else if(tipe.getStringExtra("tipe").equals("pabrik") && product.idToko == 1){
+                        else if(tipe.getStringExtra("tipe").equals("pabrik") && product.tokoId == 1){
                             dataList.add(product)
                             defaultDataList.add(product)
                         }
@@ -169,9 +171,9 @@ class ListBarangActivity : AppCompatActivity(), Url, CustomParameter {
     }
 
     fun Filters(text:String){
-        var filterProduct: ArrayList<Product> = ArrayList()
-        for(item: Product in defaultDataList){
-            if(item.produkId.toLowerCase().contains(text.toLowerCase())){
+        var filterProduct: ArrayList<DetailProduct> = ArrayList()
+        for(item: DetailProduct in defaultDataList){
+            if(item.productId.toLowerCase().contains(text.toLowerCase())){
                 filterProduct.add(item)
             }
         }

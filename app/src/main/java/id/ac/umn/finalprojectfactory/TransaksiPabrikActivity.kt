@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
 import com.google.gson.Gson
 import data.Transaction
-import kotlinx.android.synthetic.main.activity_new_stock.*
 import kotlinx.android.synthetic.main.activity_transaksi_pabrik.*
 import kotlinx.android.synthetic.main.activity_transaksi_pabrik.recyclerview_product_conf
 
@@ -30,7 +29,7 @@ class TransaksiPabrikActivity : AppCompatActivity() {
         fabAdd.setOnClickListener {
             var empty:Boolean = false
             var warning:String = ""
-            if(edt_produkid.text.isNullOrEmpty() || edt_Ukuran.text.isNullOrEmpty() || edt_Warna.text.isNullOrEmpty() || edt_Jumlah.text.isNullOrEmpty() || edt_HargaBeli.text.isNullOrEmpty()){
+            if(edt_produkid.text.isNullOrEmpty() || edt_Ukuran.text.isNullOrEmpty() || edt_Warna.text.isNullOrEmpty() || edt_Jumlahtoko.text.isNullOrEmpty() || edt_HargaBeli.text.isNullOrEmpty()){
                 empty = true
                 if(edt_produkid.text.isEmpty()){
                     warning += "Kode Sendal, "
@@ -41,7 +40,7 @@ class TransaksiPabrikActivity : AppCompatActivity() {
                 if(edt_Warna.text.isEmpty()){
                     warning += "Warna, "
                 }
-                if(edt_Jumlah.text.isEmpty()){
+                if(edt_Jumlahtoko.text.isEmpty()){
                     warning += "Jumlah, "
                 }
                 if(edt_HargaBeli.text.isEmpty()){
@@ -55,13 +54,13 @@ class TransaksiPabrikActivity : AppCompatActivity() {
                 val produkid:String = edt_produkid.text.toString()
                 val ukuran:Int = edt_Ukuran.text.toString().toInt()
                 val warna:String = edt_Warna.text.toString()
-                val jumlah:Int = edt_Jumlah.text.toString().toInt()
+                val jumlah:Int = edt_Jumlahtoko.text.toString().toInt()
                 val harga:Int = edt_HargaBeli.text.toString().toInt()
 
                 edt_produkid.text.clear()
                 edt_Ukuran.text.clear()
                 edt_Warna.text.clear()
-                edt_Jumlah.text.clear()
+                edt_Jumlahtoko.text.clear()
                 edt_HargaBeli.text.clear()
 
                 val transaction: Transaction = Transaction(1, jumlah, warna, ukuran, produkid, harga)
