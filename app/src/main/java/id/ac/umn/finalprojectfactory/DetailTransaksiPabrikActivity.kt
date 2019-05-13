@@ -12,16 +12,13 @@ import com.android.volley.toolbox.BasicNetwork
 import com.android.volley.toolbox.DiskBasedCache
 import com.android.volley.toolbox.HurlStack
 import com.android.volley.toolbox.StringRequest
-import com.google.gson.JsonObject
 import data.CustomParameter
-import data.Laporan
 import data.Product
 import kotlinx.android.synthetic.main.activity_detail_transaksi_pabrik.*
-import kotlinx.android.synthetic.main.activity_list_laporan.*
+import kotlinx.android.synthetic.main.activity_detail_transaksi_toko.txtview_Tanggal
+import kotlinx.android.synthetic.main.activity_detail_transaksi_toko.txtview_Totalharga
 import org.json.JSONArray
 import org.json.JSONObject
-import kotlin.math.log
-import kotlin.math.tan
 
 class DetailTransaksiPabrikActivity : AppCompatActivity(), CustomParameter {
 
@@ -30,7 +27,6 @@ class DetailTransaksiPabrikActivity : AppCompatActivity(), CustomParameter {
     lateinit var id: String
     lateinit var tanggal: String
     var totalHarga: Int = 0
-    var total: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,18 +36,19 @@ class DetailTransaksiPabrikActivity : AppCompatActivity(), CustomParameter {
         tanggal = intent.getStringExtra("tanggal")
         totalHarga = intent.getStringExtra("totalHarga").toInt()
         val url: String = reportPabrikParamDetail(id)
-        fetchDataPabrik(url, tanggal)
+        fetchDataPabrik(url)
 
         val layoutManager = LinearLayoutManager(this)
         recyclerview_product_conf.layoutManager = layoutManager
         lAdapter = ProductAdapterDetail(productList, this)
         recyclerview_product_conf.adapter = lAdapter
 
+        txtview_KodeTransaksiPabrik.text = id
         txtview_Tanggal.text = tanggal
         txtview_Totalharga.text = totalHarga.toString()
     }
 
-    fun fetchDataPabrik(url: String, tanggal: String){
+    fun fetchDataPabrik(url: String){
         val cache = DiskBasedCache(cacheDir, 1024*1024);
         val network = BasicNetwork(HurlStack())
 
