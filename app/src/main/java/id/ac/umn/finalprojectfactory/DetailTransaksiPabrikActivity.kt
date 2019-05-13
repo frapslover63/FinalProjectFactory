@@ -2,6 +2,7 @@ package id.ac.umn.finalprojectfactory
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.widget.Toast
 import com.android.volley.Request
@@ -16,6 +17,7 @@ import data.CustomParameter
 import data.Laporan
 import data.Product
 import kotlinx.android.synthetic.main.activity_detail_transaksi_pabrik.*
+import kotlinx.android.synthetic.main.activity_list_laporan.*
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.math.log
@@ -39,11 +41,14 @@ class DetailTransaksiPabrikActivity : AppCompatActivity(), CustomParameter {
         totalHarga = intent.getStringExtra("totalHarga").toInt()
         val url: String = reportPabrikParamDetail(id)
         fetchDataPabrik(url, tanggal)
+
+        val layoutManager = LinearLayoutManager(this)
+        recyclerview_product_conf.layoutManager = layoutManager
         lAdapter = ProductAdapterDetail(productList, this)
         recyclerview_product_conf.adapter = lAdapter
 
         txtview_Tanggal.text = tanggal
-        txtview_Totalharga.text = total.toString()
+        txtview_Totalharga.text = totalHarga.toString()
     }
 
     fun fetchDataPabrik(url: String, tanggal: String){
@@ -61,9 +66,8 @@ class DetailTransaksiPabrikActivity : AppCompatActivity(), CustomParameter {
                 val res = response.toString()
                 val result: JSONObject = JSONObject(res)
                 val statusCode: String = result.getString("success");
-                if(statusCode.equals("Success")){
-                    val objectData: JSONObject = result.getJSONObject("data")
-                    val jsonArray: JSONArray = objectData.getJSONArray("data")
+                if(statusCode.equals("success")){
+                    val jsonArray: JSONArray = result.getJSONArray("data")
                     for(i: Int in 0 until (jsonArray.length())){
                         val theData: JSONObject = jsonArray.getJSONObject(i)
 
