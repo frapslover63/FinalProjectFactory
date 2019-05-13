@@ -28,7 +28,8 @@ class ListLaporanActivity : AppCompatActivity(), Url, CustomParameter {
     lateinit var lAdapter: LaporanAdapter
     lateinit var tAdapter: LaporanAdapterToko
     lateinit var tipe: String
-    lateinit var url: String;
+    lateinit var url: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_laporan)
@@ -59,6 +60,18 @@ class ListLaporanActivity : AppCompatActivity(), Url, CustomParameter {
             recyclerview_laporan.adapter = tAdapter
         }
         Toast.makeText(this, url, Toast.LENGTH_LONG).show()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if(tipe.equals("toko")){
+            fetchDataToko(url)
+            tAdapter.updateList(laporanListToko)
+        }
+        else if(tipe.equals("pabrik")){
+            fetchDataPabrik(url)
+            lAdapter.updateList(laporanList)
+        }
     }
 
     fun fetchDataPabrik(url: String){

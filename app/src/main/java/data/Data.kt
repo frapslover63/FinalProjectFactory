@@ -40,6 +40,10 @@ interface Url{
     fun callUrlPlusStock(): String{
         return baseUrl()+"/insertStock/plusStock.php"
     }
+
+    fun callUrlVerification(): String{
+        return baseUrl()+"/transactionReport/changeStatusVerification.php"
+    }
 }
 
 interface CustomParameter : Url{
@@ -78,9 +82,13 @@ interface CustomParameter : Url{
     fun barangTokoplusDetail(id: String, size: String, color: String, count: String): String{
         return callUrlPlusStock()+"?tokoid=2&produkid="+id+"&Warna="+color+"&Ukuran="+size+"&Jumlah="+count
     }
+
+    fun transactionVerification(id: String): String{
+        return callUrlVerification()+ "?id=" + id
+    }
 }
 
 
 private fun baseUrl(): String{
-    return "http://172.16.16.83";
+    return "http://192.168.0.24";
 }

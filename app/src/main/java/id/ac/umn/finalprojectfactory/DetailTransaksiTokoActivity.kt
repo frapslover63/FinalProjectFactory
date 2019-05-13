@@ -50,6 +50,33 @@ class DetailTransaksiTokoActivity : AppCompatActivity(), CustomParameter {
         txtview_KodeTransaksiToko.text = id
         txtview_Tanggal.text = tanggal
         txtview_Totalharga.text = totalHarga.toString()
+
+        val urlVer: String = transactionVerification(id)
+        btnVerifikasi.setOnClickListener {
+            verification(urlVer)
+        }
+    }
+
+    fun verification(url: String){
+        val cache = DiskBasedCache(cacheDir, 1024*1024);
+        val network = BasicNetwork(HurlStack())
+
+        val requestQueue = RequestQueue(cache, network).apply{
+            start()
+        }
+        val stringRequest = StringRequest(
+            Request.Method.GET, url,
+            Response.Listener<String>{
+                    response ->
+                Toast.makeText(this, "Verified", Toast.LENGTH_SHORT).show()
+                finish()
+            },
+            Response.ErrorListener {
+                    error ->
+                Toast.makeText(this, error.toString(), Toast.LENGTH_LONG).show()
+            }
+        )
+        requestQueue.add(stringRequest)
     }
 
     fun fetchDataToko(url: String){
