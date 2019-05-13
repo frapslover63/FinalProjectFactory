@@ -74,9 +74,13 @@ interface CustomParameter : Url{
     fun barangpabrikplusDetail(id: String, size: String, color: String, count: String): String{
         return callUrlPlusStock()+"?tokoid=1&produkid="+id+"&Warna="+color+"&Ukuran="+size+"&Jumlah="+count
     }
+
+    fun barangTokoplusDetail(id: String, size: String, color: String, count: String): String{
+        return callUrlPlusStock()+"?tokoid=2&produkid="+id+"&Warna="+color+"&Ukuran="+size+"&Jumlah="+count
+    }
 }
 
 
 private fun baseUrl(): String{
-    return "http://172.16.7.215";
+    return "http://172.16.16.83";
 }
