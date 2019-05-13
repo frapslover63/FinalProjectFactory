@@ -109,9 +109,9 @@ class ListBarangActivity : AppCompatActivity(), Url, CustomParameter {
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = productAdapter
 
-        txtSearch = findViewById(R.id.edt_Search)
+//        txtSearch = findViewById(R.id.edt_Search)
 
-        txtSearch.addTextChangedListener(object: TextWatcher{
+        edt_Search.addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(s: Editable?) {
                 Filters(s.toString());
             }
@@ -125,6 +125,11 @@ class ListBarangActivity : AppCompatActivity(), Url, CustomParameter {
 
             }
         })
+
+        fabNext.setOnClickListener{
+            val intent = Intent(this@ListBarangActivity, NewStockOption::class.java);
+            startActivity(intent);
+        }
     }
 
     override fun onStart() {
@@ -137,12 +142,22 @@ class ListBarangActivity : AppCompatActivity(), Url, CustomParameter {
     }
 
     fun Filters(text:String){
-        var filterProduct: ArrayList<DetailProduct> = ArrayList()
-        for(item: DetailProduct in defaultDataList){
-            if(item.productId.toLowerCase().contains(text.toLowerCase())){
-                filterProduct.add(item)
+        val filteredList: ArrayList<DetailProduct> = ArrayList()
+        if(tipe.getStringExtra("tipe").equals("pabrik")){
+            for (dat: DetailProduct in defaultDataList){
+                if(dat.productId.toLowerCase().contains(text.toLowerCase())){
+                    filteredList.add(dat)
+                }
             }
+            productAdapter.FilterList(filteredList);
         }
-        productAdapter.FilterList(filterProduct)
+        else if(tipe.getStringExtra("tipe").equals("toko")){
+            for(dats: DetailProduct in dataList){
+                if(dats.productId.toLowerCase().contains(text.toLowerCase())){
+                    filteredList.add(dats)
+                }
+            }
+            productAdapter.FilterList(filteredList)
+        }
     }
 }

@@ -77,7 +77,7 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
     }
 
     fun updateList(newList: ArrayList<DetailProduct>){
-        if(newList.size > 0){
+        if(newList.size >= 0){
             dataList = ArrayList()
             dataList.addAll(newList)
             notifyDataSetChanged()

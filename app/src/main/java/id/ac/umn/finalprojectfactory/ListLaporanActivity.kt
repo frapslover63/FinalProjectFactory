@@ -3,6 +3,8 @@ package id.ac.umn.finalprojectfactory
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.widget.Toast
 import com.android.volley.Request
@@ -59,8 +61,42 @@ class ListLaporanActivity : AppCompatActivity(), Url, CustomParameter {
             tAdapter = LaporanAdapterToko(laporanListToko, this)
             recyclerview_laporan.adapter = tAdapter
         }
+
+        edt_Search.addTextChangedListener(object: TextWatcher{
+            override fun afterTextChanged(s: Editable?) {
+                Filters(s.toString())
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+        })
     }
 
+    fun Filters(text:String){
+        var filteredList: ArrayList<Laporan> = ArrayList()
+        var filteredListToko: ArrayList<LaporanToko> = ArrayList()
+        if(tipe.equals("pabrik")){
+            for (lap: Laporan in laporanList ){
+                if(lap.tanggal.toLowerCase().contains(text.toLowerCase())){
+                    filteredList.add(lap)
+                }
+            }
+            lAdapter.FilterList(filteredList);
+        }else if(tipe.equals("toko")){
+            for(laps: LaporanToko in laporanListToko){
+                if(laps.tanggal.toLowerCase().contains(text.toLowerCase())){
+                    filteredListToko.add(laps)
+                }
+            }
+            tAdapter.FilterList(filteredListToko)
+        }
+
+    }
     override fun onStart() {
         super.onStart()
         if(tipe.equals("toko")){

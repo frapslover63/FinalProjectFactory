@@ -37,6 +37,10 @@ class LaporanAdapterToko : RecyclerView.Adapter<LaporanAdapterToko.LaporanTokoVi
         return laporanListToko.size
     }
 
+    fun FilterList(filteredList: ArrayList<LaporanToko>){
+        updateList(filteredList)
+    }
+
     override fun onBindViewHolder(p0: LaporanTokoViewHolder, p1: Int) {
         p0.transactionId.text = "Transaction ID : " + laporanListToko.get(p1).transactionId
         p0.tanggal.text = laporanListToko.get(p1).tanggal
