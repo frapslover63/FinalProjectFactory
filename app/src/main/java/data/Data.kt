@@ -44,6 +44,14 @@ interface Url{
     fun callUrlVerification(): String{
         return baseUrl()+"/transactionReport/changeStatusVerification.php"
     }
+
+    fun callUrlCurrentPrice(): String{
+        return baseUrl()+"/getData/getcurrentPrice.php"
+    }
+
+    fun callUpdatePrice(): String{
+        return baseUrl()+"/insertData/changePriceStore.php"
+    }
 }
 
 interface CustomParameter : Url{
@@ -86,9 +94,17 @@ interface CustomParameter : Url{
     fun transactionVerification(id: String): String{
         return callUrlVerification()+ "?id=" + id
     }
+
+    fun currentPrice(): String{
+        return callUrlCurrentPrice()+"?userName=MWB&Password=MWB"
+    }
+
+    fun changecurrentPrice(price: Int): String{
+        return callUpdatePrice()+"?Harga="+price;
+    }
 }
 
 
 private fun baseUrl(): String{
-    return "http://192.168.0.24";
+    return "http://172.16.5.215";
 }
