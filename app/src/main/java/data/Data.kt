@@ -36,6 +36,10 @@ interface Url{
     fun callUrlLaporanPabrikDetail(): String{
         return baseUrl()+"/transactionReport/detailreportPabrik.php"
     }
+
+    fun callUrlPlusStock(): String{
+        return baseUrl()+"/insertStock/plusStock.php"
+    }
 }
 
 interface CustomParameter : Url{
@@ -66,9 +70,13 @@ interface CustomParameter : Url{
     fun reportPabrikParamDetail(id: String): String{
         return callUrlLaporanPabrikDetail() + "?id=" + id
     }
+
+    fun barangpabrikplusDetail(id: String, size: String, color: String, count: String): String{
+        return callUrlPlusStock()+"?tokoid=1&produkid="+id+"&Warna="+color+"&Ukuran="+size+"&Jumlah="+count
+    }
 }
 
 
 private fun baseUrl(): String{
-    return "http://192.168.0.24";
+    return "http://172.16.7.215";
 }
