@@ -92,6 +92,7 @@ class UbahHargaActivity : AppCompatActivity(), CustomParameter{
                 val statusCode: String = res.getString("success")
                 if(statusCode.equals("Success")){
                     Toast.makeText(this, "Request Complete", Toast.LENGTH_LONG).show()
+                    finish()
                 }
             } ,
             Response.ErrorListener { error->

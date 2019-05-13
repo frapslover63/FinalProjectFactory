@@ -100,7 +100,7 @@ interface CustomParameter : Url{
     }
 
     fun changecurrentPrice(price: Int): String{
-        return callUpdatePrice()+"?Harga="+price;
+        return callUpdatePrice()+"?harga="+price;
     }
 }
 

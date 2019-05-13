@@ -1,7 +1,6 @@
 package id.ac.umn.finalprojectfactory
 
 import android.content.Intent
-import android.os.AsyncTask
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -10,17 +9,16 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.EditText
-import data.Product
+import android.widget.Toast
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.Response
+import com.android.volley.toolbox.BasicNetwork
+import com.android.volley.toolbox.DiskBasedCache
+import com.android.volley.toolbox.HurlStack
+import com.android.volley.toolbox.StringRequest
 import org.json.JSONArray
-import org.json.JSONException
 import org.json.JSONObject
-import java.io.BufferedReader
-import java.io.IOException
-import java.io.InputStream
-import java.io.InputStreamReader
-import java.net.HttpURLConnection
-import java.net.MalformedURLException
-import java.net.URL
 import data.Url
 import data.CustomParameter
 import data.DetailProduct
@@ -35,50 +33,26 @@ class ListBarangActivity : AppCompatActivity(), Url, CustomParameter {
 
     private lateinit var txtSearch: EditText
 
-    private var param: String = AuthParam()
+    private lateinit var param: String
     lateinit var tipe: Intent
 
-    private inner class FetchData : AsyncTask<String, Void, String>() {
+    fun fetchData(url: String){
 
-        override fun doInBackground(vararg params: String?): String? {
-            var urlConnection: HttpURLConnection? = null
-            var bufferedReader: BufferedReader? = null
+        val cache = DiskBasedCache(cacheDir, 1024* 1024);
 
-            var jsonString: String = ""
-            try {
-                val urlString: String = UrlGetStock() + params[0]
-                val urlConnect: URL = URL(urlString)
+        val network = BasicNetwork(HurlStack());
 
-                Log.e("URL", urlString)
-                urlConnection = urlConnect.openConnection() as HttpURLConnection
+        val requestQueue = RequestQueue(cache, network).apply{
+            start()
+        }
 
-                urlConnection.requestMethod = "GET"
-
-                urlConnection.connect()
-
-                //var lengthOfFile: Int = urlConnection.contentLength
-
-                val inputStream: InputStream = urlConnection.inputStream
-
-                if(inputStream.available() > 0){
-                    return null
-                }
-
-                bufferedReader = BufferedReader(InputStreamReader(inputStream))
-
-                val line: String = bufferedReader.readLine()
-
-                jsonString = line
-
-                Log.d("FETCHDATA", jsonString)
-
-                val jsonObject: JSONObject = JSONObject(jsonString)
-
-                val statusCode: String = jsonObject.getString("success")
-
+        val request = StringRequest(Request.Method.GET, url,
+            Response.Listener  {
+                    response->
+                val res = JSONObject(response.toString());
+                val statusCode: String = res.getString("success")
                 if(statusCode.equals("success")){
-                    val jsonArray: JSONArray = jsonObject.getJSONArray("data")
-                    Log.e("Data", jsonArray.toString())
+                    val jsonArray: JSONArray = res.getJSONArray("data")
                     for(i: Int in 0 until (jsonArray.length())){
                         val theData: JSONObject = jsonArray.getJSONObject(i)
 
@@ -99,39 +73,22 @@ class ListBarangActivity : AppCompatActivity(), Url, CustomParameter {
                             defaultDataList.add(product)
                         }
                     }
-//                    Log.e("dataList", dataList.get(0).produkId);
-//                    Log.e("typeExtra", tipe.getStringExtra("tipe"));
                     productAdapter.updateList(dataList, tipe.getStringExtra("tipe"))
                 }
+            } ,
+            Response.ErrorListener { error->
+                Toast.makeText(this, error.toString(), Toast.LENGTH_LONG).show()
             }
-            catch (e: MalformedURLException){
-                Log.e("MALFORMED", "MalformedURLException" + e.message)
-            }
-            catch (e: IOException){
-                Log.e("IO", "IOException" + e.message)
-            }
-            catch (e: JSONException){
-                e.printStackTrace()
-            }
-            finally {
-                urlConnection?.disconnect()
-
-                if (bufferedReader != null) {
-                    try {
-                        bufferedReader.close()
-                    } catch (e: IOException) {
-                        Log.e("BUFFEREDIOEXCEPTION", "IOException" + e.message)
-                    }
-                }
-            }
-            return jsonString
-        }
+        )
+        requestQueue.add(request)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_barang)
 
+        param = UrlGetStock() + AuthParam()
+        Log.e("test", param)
         tipe = intent
 
         if(intent.getStringExtra("tipe").equals("toko")){
@@ -143,7 +100,7 @@ class ListBarangActivity : AppCompatActivity(), Url, CustomParameter {
 
         dataList = ArrayList()
         defaultDataList = ArrayList()
-        FetchData().execute(param)
+        fetchData(param)
 
         productAdapter = ProductAdapter(dataList, this@ListBarangActivity)
 
@@ -170,6 +127,15 @@ class ListBarangActivity : AppCompatActivity(), Url, CustomParameter {
         })
     }
 
+    override fun onStart() {
+        super.onStart()
+        if(dataList.size > 0){
+            dataList = ArrayList()
+            defaultDataList = ArrayList()
+            fetchData(param)
+        }
+    }
+
     fun Filters(text:String){
         var filterProduct: ArrayList<DetailProduct> = ArrayList()
         for(item: DetailProduct in defaultDataList){
@@ -177,7 +143,6 @@ class ListBarangActivity : AppCompatActivity(), Url, CustomParameter {
                 filterProduct.add(item)
             }
         }
-
         productAdapter.FilterList(filterProduct)
     }
 }

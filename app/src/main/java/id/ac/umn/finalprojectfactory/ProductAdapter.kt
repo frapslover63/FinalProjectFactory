@@ -54,12 +54,6 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
         p0.keteranganItem.text = dataList.get(p1).keterangan
         var intent: Intent = Intent()
 
-//        val pass: Bundle = Bundle()
-//        pass.putString("produkid", dataList.get(p1).produkId)
-//        pass.putString("warna", dataList.get(p1).warna)
-//        pass.putString("ukuran", dataList.get(p1).ukuran.toString())
-//        pass.putString("jumlah", dataList.get(p1).jumlah.toString())
-
         if(tipeDetail.equals("toko")){
             intent = Intent(context, DetailItemTokoActivity::class.java)
         }
@@ -70,7 +64,6 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
         intent.putExtra("warna", dataList.get(p1).warna)
         intent.putExtra("ukuran", dataList.get(p1).ukuran.toString())
         intent.putExtra("jumlah", dataList.get(p1).jumlah.toString())
-        //intent.putExtras(pass)
         p0.Click(intent, context)
     }
 
@@ -92,13 +85,12 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
     }
 
     class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        //val idItem: TextView = itemView.findViewById(R.id.txtview_produkid) as TextView
-        val idItem: TextView = itemView.txtview_produkid as TextView
-        val warnaItem: TextView = itemView.txtview_Warna as TextView
-        val ukuranItem: TextView = itemView.txtview_Ukuran as TextView
-        val jumlahItem: TextView = itemView.txtview_Jumlah as TextView
-        val keteranganItem: TextView = itemView.txtview_Keterangan as TextView
-        val parentLayout: LinearLayout = itemView.parent_layout as LinearLayout
+        val idItem: TextView = itemView.txtview_produkid
+        val warnaItem: TextView = itemView.txtview_Warna
+        val ukuranItem: TextView = itemView.txtview_Ukuran
+        val jumlahItem: TextView = itemView.txtview_Jumlah
+        val keteranganItem: TextView = itemView.txtview_Keterangan
+        val parentLayout: LinearLayout = itemView.parent_layout
         fun Click(intent: Intent, context: Context){
             parentLayout.setOnClickListener {
                 context.startActivity(intent)

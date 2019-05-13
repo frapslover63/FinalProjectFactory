@@ -69,8 +69,8 @@ class DetailItemTokoActivity : AppCompatActivity(), CustomParameter {
                 val res = JSONObject(response.toString());
                 val statusCode: String = res.getString("success")
                 if(statusCode.equals("Success")){
-//                    val data: String = res.getString("data");
-//                    Toast.makeText(this, data, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Request Complete", Toast.LENGTH_SHORT).show()
+                    txtview_CurrentStockToko.text = (txtview_CurrentStockToko.text.toString().toInt() + edt_Jumlahtoko.text.toString().toInt()).toString()
                 }
             } ,
             Response.ErrorListener { error->

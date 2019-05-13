@@ -64,12 +64,16 @@ class ListLaporanActivity : AppCompatActivity(), Url, CustomParameter {
     override fun onStart() {
         super.onStart()
         if(tipe.equals("toko")){
-            laporanListToko = ArrayList()
-            fetchDataToko(url)
+            if(laporanListToko.size > 0){
+                laporanListToko = ArrayList()
+                fetchDataToko(url)
+            }
         }
         else if(tipe.equals("pabrik")){
-            laporanList = ArrayList()
-            fetchDataPabrik(url)
+            if(laporanList.size > 0){
+                laporanList = ArrayList()
+                fetchDataPabrik(url)
+            }
         }
     }
 
