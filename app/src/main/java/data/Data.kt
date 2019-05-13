@@ -100,11 +100,11 @@ interface CustomParameter : Url{
     }
 
     fun changecurrentPrice(price: Int): String{
-        return callUpdatePrice()+"?Harga="+price;
+        return callUpdatePrice()+"?harga="+price;
     }
 }
 
 
 private fun baseUrl(): String{
-    return "http://172.16.5.215";
+    return "http://192.168.1.6";
 }
