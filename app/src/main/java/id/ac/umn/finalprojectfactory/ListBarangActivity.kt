@@ -78,7 +78,7 @@ class ListBarangActivity : AppCompatActivity(), Url, CustomParameter {
 
                 if(statusCode.equals("success")){
                     val jsonArray: JSONArray = jsonObject.getJSONArray("data")
-
+                    Log.e("Data", jsonArray.toString())
                     for(i: Int in 0 until (jsonArray.length())){
                         val theData: JSONObject = jsonArray.getJSONObject(i)
 
