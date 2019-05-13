@@ -161,7 +161,7 @@
                                     android:id="@+id/edt_Jumlahpabrik"
                                     android:layout_width="75dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginEnd="35dp"
+                                    android:layout_marginEnd="25dp"
                                     android:inputType="number" />
 
                             <TextView
