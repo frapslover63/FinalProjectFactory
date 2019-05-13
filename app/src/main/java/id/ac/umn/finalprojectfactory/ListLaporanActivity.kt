@@ -59,18 +59,21 @@ class ListLaporanActivity : AppCompatActivity(), Url, CustomParameter {
             tAdapter = LaporanAdapterToko(laporanListToko, this)
             recyclerview_laporan.adapter = tAdapter
         }
-        Toast.makeText(this, url, Toast.LENGTH_LONG).show()
     }
 
     override fun onStart() {
         super.onStart()
         if(tipe.equals("toko")){
-            fetchDataToko(url)
-            tAdapter.updateList(laporanListToko)
+            if(laporanListToko.size > 0){
+                laporanListToko = ArrayList()
+                fetchDataToko(url)
+            }
         }
         else if(tipe.equals("pabrik")){
-            fetchDataPabrik(url)
-            lAdapter.updateList(laporanList)
+            if(laporanList.size > 0){
+                laporanList = ArrayList()
+                fetchDataPabrik(url)
+            }
         }
     }
 
@@ -138,7 +141,6 @@ class ListLaporanActivity : AppCompatActivity(), Url, CustomParameter {
                             theData.getInt("status"),
                             theData.getInt("total")
                         )
-
                         laporanListToko.add(laporantoko)
                     }
                     tAdapter.updateList(laporanListToko)

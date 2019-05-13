@@ -41,7 +41,7 @@ class LaporanAdapter : RecyclerView.Adapter<LaporanAdapter.LaporanViewHolder> {
     }
 
     override fun onBindViewHolder(p0: LaporanViewHolder, p1: Int) {
-        p0.transactionId.text = "Transaction ID" + laporanList.get(p1).transactionId
+        p0.transactionId.text = "Transaction ID : " + laporanList.get(p1).transactionId
         p0.tanggal.text = laporanList.get(p1).tanggal
         p0.namaCompany.text = laporanList.get(p1).namaCompany
         p0.totalHarga.text = laporanList.get(p1).totalHarga.toString()
@@ -53,15 +53,6 @@ class LaporanAdapter : RecyclerView.Adapter<LaporanAdapter.LaporanViewHolder> {
         //intent.putExtras(pass)
         p0.Click(intent, context)
     }
-
-//    fun updateList(newList: ArrayList<Laporan>, tipe: String){
-//        if(newList.size > 0){
-//            tipeDetail = tipe
-//            laporanList = ArrayList()
-//            laporanList.addAll(newList)
-//            notifyDataSetChanged()
-//        }
-//    }
 
     fun updateList(newList: ArrayList<Laporan>){
         if(newList.size > 0){

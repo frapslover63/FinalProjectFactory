@@ -2,6 +2,7 @@ package id.ac.umn.finalprojectfactory
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
@@ -39,7 +40,7 @@ class DetailItemPabrikActivity : AppCompatActivity(), CustomParameter {
         btn_SetStock.setOnClickListener{
             val asString: EditText = edt_Jumlahpabrik
             if(asString.text.trim().length<=0){
-                Toast.makeText(this, "Jumlah Field tidak boleh kosong", Toast.LENGTH_LONG).show()
+                Snackbar.make(it, "Field Jumlah Tidak Boleh Kosong!", Snackbar.LENGTH_SHORT).show()
             }
             else{
                 val jumlah: Int = asString.text.toString().toInt()
@@ -69,8 +70,8 @@ class DetailItemPabrikActivity : AppCompatActivity(), CustomParameter {
                val res = JSONObject(response.toString());
                val statusCode: String = res.getString("success")
                if(statusCode.equals("Success")){
-                   val data: String = res.getString("data");
-                   Toast.makeText(this, data, Toast.LENGTH_LONG).show()
+                   Toast.makeText(this, "Request Complete", Toast.LENGTH_SHORT).show()
+                   txtview_CurrentStockPabrik.text = (txtview_CurrentStockPabrik.text.toString().toInt() + edt_Jumlahpabrik.text.toString().toInt()).toString()
                }
            } ,
             Response.ErrorListener { error->

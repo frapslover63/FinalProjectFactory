@@ -2,6 +2,7 @@ package id.ac.umn.finalprojectfactory
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.text.Editable
 import android.util.Log
 import android.widget.Toast
@@ -48,7 +49,7 @@ class NewStockActivity : AppCompatActivity(), Url {
                     warning += "Harga, "
                 }
                 warning += "masih kosong"
-                Toast.makeText(this@NewStockActivity, warning, Toast.LENGTH_SHORT).show()
+                Snackbar.make(it, warning, Snackbar.LENGTH_SHORT).show()
             }
         }
     }
@@ -75,7 +76,8 @@ class NewStockActivity : AppCompatActivity(), Url {
                 if(status == "Success"){
 //                    var stringRequest1: StringRequest = addDetail()
 //                    requestQueue.add(stringRequest1)
-                    Toast.makeText(this, data, Toast.LENGTH_LONG);
+                    Toast.makeText(this, "New Stock Added", Toast.LENGTH_LONG).show()
+                    finish()
                 }
                 else{
                     Log.e("ResponseUnknown", data)
@@ -88,32 +90,4 @@ class NewStockActivity : AppCompatActivity(), Url {
         )
         requestQueue.add(stringRequest)
     }
-
-//    fun addDetail(): StringRequest{
-//        val urlStockDetail: String = callUrlNewProductDetail()+
-//                "?produkid=" + kode.toString()+
-//                "&Warna=" + warna.toString()+
-//                "&Ukuran=" + ukuran.toString()
-//
-//        val detailRequest = StringRequest(
-//            Request.Method.GET,
-//            urlStockDetail,
-//            Response.Listener<String>() {
-//                val res1 = JSONObject(it)
-//                val status: String = res1.getString("success")
-//                val data: String = res1.getString("data")
-//                if(status.equals("success")){
-//                    Toast.makeText(this@NewStockActivity, "Product Added Successfully", Toast.LENGTH_SHORT).show()
-//                }
-//                else{
-//                    Log.e("ResponseUnknown", data)
-//                    Toast.makeText(this@NewStockActivity, data, Toast.LENGTH_SHORT).show()
-//                }
-//            },
-//            Response.ErrorListener {
-//
-//            }
-//        )
-//        return detailRequest
-//    }
 }

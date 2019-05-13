@@ -78,8 +78,14 @@ class TransaksiPabrikActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             else{
-                Toast.makeText(this, "Transaction cannot be empty", Toast.LENGTH_LONG).show()
+                Snackbar.make(it, "Transaction cannot be empty", Snackbar.LENGTH_SHORT).show()
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        transactionList = ArrayList()
+        pAdapter.updateList(transactionList)
     }
 }

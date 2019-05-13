@@ -106,5 +106,5 @@ interface CustomParameter : Url{
 
 
 private fun baseUrl(): String{
-    return "http://192.168.1.6";
+    return "http://192.168.0.24";
 }

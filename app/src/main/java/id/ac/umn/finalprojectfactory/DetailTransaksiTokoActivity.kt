@@ -47,7 +47,7 @@ class DetailTransaksiTokoActivity : AppCompatActivity(), CustomParameter {
         lAdapter = ProductAdapterDetailToko(productList, this)
         recyclerview_product_conf_toko.adapter = lAdapter
 
-        txtview_KodeTransaksiToko.text = id
+        txtview_KodeTransaksiToko.text = "Transaction ID : " + id
         txtview_Tanggal.text = tanggal
         txtview_Totalharga.text = totalHarga.toString()
 

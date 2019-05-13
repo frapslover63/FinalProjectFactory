@@ -51,9 +51,8 @@ class TransaksiPabrikConfirmActivity : AppCompatActivity(), CustomParameter {
             }
 
             if(!empty){
-                Toast.makeText(it.context, "SendData", Toast.LENGTH_SHORT).show()
                 val datas: String = Gson().toJson(transactionList)
-                sendData(datas, edt_CompanyName.text.toString())
+                sendData(datas, edt_CompanyName.text.toString().replace("\\s".toRegex(), ""))
             }
         }
 
@@ -66,7 +65,7 @@ class TransaksiPabrikConfirmActivity : AppCompatActivity(), CustomParameter {
         postBody.put("transactionid", id);
         postBody.put("jsonString", data);
 
-        Log.d("Data", postBody.toString());
+//        Log.d("Data", postBody.toString());
 
         val queue = Volley.newRequestQueue(this);
         val request = JsonObjectRequest(Request.Method.POST, url, postBody,
@@ -75,9 +74,12 @@ class TransaksiPabrikConfirmActivity : AppCompatActivity(), CustomParameter {
                 Log.d("Response2", response.toString() )
                 val statusCode: String = response.getString("success")
                 if(statusCode.equals("Success")){
-
-                    val statusCodes: String = response.getString("success")
-                    Toast.makeText(this, statusCodes, Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Transaction Complete", Toast.LENGTH_LONG).show()
+                    finish()
+                }
+                else{
+                    Toast.makeText(this, response.getString("data"), Toast.LENGTH_LONG).show()
+                    finish()
                 }
             }, Response.ErrorListener {
                     error : VolleyError -> Log.d("Error2", error.toString());
@@ -96,18 +98,18 @@ class TransaksiPabrikConfirmActivity : AppCompatActivity(), CustomParameter {
         }
 
         val url = StartTransactionParam() + "&Company=" + c;
-        Log.e("URL", url)
+//        Log.e("URL", url)
 
         val request = StringRequest(Request.Method.GET, url,
             Response.Listener {
                     response ->
-                Log.d("Response", response.toString() )
+//                Log.d("Response", response.toString() )
                 val res = JSONObject(response.toString())
                 val statusCode: String = res.getString("success")
                 if(statusCode.equals("Success")){
                     val transactionId  = res.getString("data")
                     sendProductData(transactionId, s)
-                    Log.d("TID",transactionId)
+//                    Log.d("TID",transactionId)
                 }
             }, Response.ErrorListener {
                     error : VolleyError -> Log.d("Error1", error.toString())

@@ -38,7 +38,7 @@ class LaporanAdapterToko : RecyclerView.Adapter<LaporanAdapterToko.LaporanTokoVi
     }
 
     override fun onBindViewHolder(p0: LaporanTokoViewHolder, p1: Int) {
-        p0.transactionId.text = "Transaction ID" + laporanListToko.get(p1).transactionId
+        p0.transactionId.text = "Transaction ID : " + laporanListToko.get(p1).transactionId
         p0.tanggal.text = laporanListToko.get(p1).tanggal
         if(laporanListToko.get(p1).status == 1){
             p0.status.text = "Verified"
