@@ -40,6 +40,7 @@ class ProductAdapterDetailToko : RecyclerView.Adapter<ProductAdapterDetailToko.P
         p0.warna.text = dataList.get(p1).warna
         p0.ukuran.text = dataList.get(p1).ukuran.toString()
         p0.jumlah.text = dataList.get(p1).jumlah.toString()
+        p0.harga.text = dataList.get(p1).hargaLaporan.toString()
     }
 
     fun updateList(newList: ArrayList<Product>, tipe: String){
@@ -60,12 +61,12 @@ class ProductAdapterDetailToko : RecyclerView.Adapter<ProductAdapterDetailToko.P
     }
 
     class ProductDetailTokoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val idItem: TextView = itemView.txtview_produkid_laporan
-        val ukuran: TextView = itemView.txtview_Ukuran_laporan
-        val warna: TextView = itemView.txtview_Warna_laporan
-        val jumlah: TextView = itemView.txtview_Jumlah_laporan
-        val harga: TextView = itemView.txtview_HargaJual_laporan
-        val parentLayout: LinearLayout = itemView.parent_layout1
+        val idItem: TextView = itemView.txtview_produkid_laporan2
+        val ukuran: TextView = itemView.txtview_Ukuran_laporan2
+        val warna: TextView = itemView.txtview_Warna_laporan2
+        val jumlah: TextView = itemView.txtview_Jumlah_laporan2
+        val harga: TextView = itemView.txtview_HargaJual_laporan2
+        val parentLayout: LinearLayout = itemView.parent_layout2
 //        fun Click(intent: Intent, context: Context){
 //            parentLayout.setOnClickListener {
 //                context.startActivity(intent)
