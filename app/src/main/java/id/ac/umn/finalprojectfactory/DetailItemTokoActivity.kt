@@ -40,7 +40,7 @@ class DetailItemTokoActivity : AppCompatActivity(), CustomParameter {
         btnSetStock.setOnClickListener{
             val asString: EditText = edt_Jumlahtoko
             if(asString.text.trim().length<=0){
-                Toast.makeText(this, "Jumlah Field tidak boleh kosong", Toast.LENGTH_LONG).show()
+
             }
             else{
                 val jumlah: Int = asString.text.toString().toInt()
@@ -69,8 +69,8 @@ class DetailItemTokoActivity : AppCompatActivity(), CustomParameter {
                 val res = JSONObject(response.toString());
                 val statusCode: String = res.getString("success")
                 if(statusCode.equals("Success")){
-                    val data: String = res.getString("data");
-                    Toast.makeText(this, data, Toast.LENGTH_LONG).show()
+//                    val data: String = res.getString("data");
+//                    Toast.makeText(this, data, Toast.LENGTH_LONG).show()
                 }
             } ,
             Response.ErrorListener { error->

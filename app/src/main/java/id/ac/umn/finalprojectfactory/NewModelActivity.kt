@@ -2,6 +2,7 @@ package id.ac.umn.finalprojectfactory
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.text.Editable
 import android.util.Log
 import android.widget.Toast
@@ -54,7 +55,7 @@ class NewModelActivity : AppCompatActivity(), Url {
                     warning += "Warna, "
                 }
                 warning += "masih kosong"
-                Toast.makeText(this@NewModelActivity, warning, Toast.LENGTH_SHORT).show()
+                Snackbar.make(it, warning, Snackbar.LENGTH_SHORT).show()
             }
         }
     }
@@ -80,9 +81,8 @@ class NewModelActivity : AppCompatActivity(), Url {
                 val status: String = res.getString("success")
                 val data: String = res.getString("data")
                 if (status == "Success") {
-//                    var stringRequest1: StringRequest = addDetail()
-//                    requestQueue.add(stringRequest1)
-                    Toast.makeText(this, data, Toast.LENGTH_LONG);
+                    Toast.makeText(this, "New Model Added", Toast.LENGTH_LONG).show()
+                    finish()
                 } else {
                     Log.e("ResponseUnknown", data)
                     Toast.makeText(this@NewModelActivity, data, Toast.LENGTH_SHORT).show()
@@ -95,43 +95,5 @@ class NewModelActivity : AppCompatActivity(), Url {
         requestQueue.add(stringRequest);
     }
 }
-
-//    fun addDetail(){
-//        val cache = DiskBasedCache(cacheDir, 1024 * 1024)
-//
-//        val network = BasicNetwork(HurlStack())
-//
-//        val requestQueue : RequestQueue = RequestQueue(cache, network).apply { start() }
-//
-//        val urlStockDetail: String = callUrlNewProductDetail()+
-//                "?produkid=" + kode.toString()+
-//                "&Warna=" + warna.toString()+
-//                "&Ukuran=" + ukuran.toString()
-//
-//         Log.d("URL", urlStockDetail);
-//
-//        val stringRequest = StringRequest(
-//            Request.Method.GET,
-//            urlStockDetail,
-//            Response.Listener<String>() {
-//                val res = JSONObject(it)
-//                val status: String = res.getString("success")
-//                val data: String = res.getString("data")
-//                if(status == "Success"){
-////                    var stringRequest1: StringRequest = addDetail()
-////                    requestQueue.add(stringRequest1)
-//                    Toast.makeText(this, data, Toast.LENGTH_LONG);
-//                }
-//                else{
-//                    Log.e("ResponseUnknown", data)
-//                    Toast.makeText(this@NewModelActivity, data, Toast.LENGTH_SHORT).show()
-//                }
-//            },
-//            Response.ErrorListener {
-//
-//            }
-//        )
-//        requestQueue.add(stringRequest)
-//}
 
 

@@ -37,6 +37,10 @@ class TransactionAdapter : RecyclerView.Adapter<TransactionAdapter.TransactionVi
             transactionList.addAll(newList)
             notifyDataSetChanged()
         }
+        else{
+            transactionList = ArrayList()
+            notifyDataSetChanged()
+        }
     }
 
     override fun onBindViewHolder(p0: TransactionViewHolder, p1: Int) {
