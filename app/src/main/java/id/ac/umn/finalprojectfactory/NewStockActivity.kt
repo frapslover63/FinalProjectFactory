@@ -26,12 +26,12 @@ class NewStockActivity : AppCompatActivity(), Url {
 
         kode = edt_KodeSendal.text
         keterangan = edt_Keterangan.text
-        harga = edt_Harga.text
+//        harga = edt_Harga.text
 
         btnAdd.setOnClickListener {
             var empty: Boolean = false
             var warning: String = ""
-            if(kode.isEmpty() || keterangan.isEmpty() || harga.isEmpty()){
+            if(kode.isEmpty() || keterangan.isEmpty()){
                 empty = true
             }
 
@@ -44,9 +44,6 @@ class NewStockActivity : AppCompatActivity(), Url {
                 }
                 if(keterangan.isEmpty()){
                     warning += "Keterangan, "
-                }
-                if(harga.isEmpty()){
-                    warning += "Harga, "
                 }
                 warning += "masih kosong"
                 Snackbar.make(it, warning, Snackbar.LENGTH_SHORT).show()
@@ -63,8 +60,7 @@ class NewStockActivity : AppCompatActivity(), Url {
 
         val urlNewStock: String = callUrlNewProduct()+
                 "?produkid=" + kode.toString()+
-                "&Keterangan=" + keterangan.toString()+
-                "&HargaJual=" + harga.toString()
+                "&Keterangan=" + keterangan.toString()
 
         val stringRequest = StringRequest(
             Request.Method.GET,

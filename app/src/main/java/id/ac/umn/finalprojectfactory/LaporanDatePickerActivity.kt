@@ -12,6 +12,7 @@ import java.util.*
 class LaporanDatePickerActivity : AppCompatActivity() {
 
     lateinit var tipe: String
+    var bool: Boolean = false;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_laporan_date_picker)
@@ -62,7 +63,26 @@ class LaporanDatePickerActivity : AppCompatActivity() {
         }
 
         btnSearch.setOnClickListener(){
-            if(tanggal1 && tanggal2){
+            if(tahunSampai>=tahunDari){
+                if(tahunSampai==tahunDari){
+                    if(bulanSampai>=bulanDari){
+                        if(bulanSampai==bulanDari){
+                            bool=true
+                            if(hariSampai>=hariDari){
+                                bool = true;
+                            }
+                            else{
+                                bool = false;
+                            }
+                        }
+                    }
+                }
+                else{
+                    bool = true;
+                }
+            }
+
+            if(tanggal1 && tanggal2&& bool){
                 val intent = Intent(this@LaporanDatePickerActivity, ListLaporanActivity::class.java)
                 intent.putExtra("tahunDari", tahunDari.toString())
                 intent.putExtra("bulanDari", bulanDari.toString())
@@ -76,6 +96,9 @@ class LaporanDatePickerActivity : AppCompatActivity() {
 
             if(!tanggal1 || !tanggal2){
                 Snackbar.make(it, "Tanggal masih ada yang kosong", Snackbar.LENGTH_SHORT).show()
+            }
+            if(!bool){
+                Snackbar.make(it, "Tanggal dari tidak boleh melebihi tanggal sampai", Snackbar.LENGTH_SHORT).show()
             }
         }
     }

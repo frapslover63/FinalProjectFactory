@@ -20,7 +20,7 @@ class TransaksiPabrikActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transaksi_pabrik)
 
-        val layoutManager = LinearLayoutManager(this)
+        val layoutManager: LinearLayoutManager? = LinearLayoutManager(this)
 
         recyclerview_product_conf.layoutManager = layoutManager
         pAdapter = TransactionAdapter(transactionList, this)
